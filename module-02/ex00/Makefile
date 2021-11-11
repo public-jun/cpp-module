@@ -1,22 +1,23 @@
-NAME     :=  replace
-CXX      := clang++
+NAME := ex00
+CXX := c++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 
-srcs     := ./main.cpp
-
-objs     := $(srcs:.cpp=.o)
-depends  := $(srcs:%.cpp=%.d)
+INCLUDE := ./includes
+srcs := ./srcs/main.cpp \
+		./srcs/Fixed.cpp
+objs := $(srcs:.cpp=.o)
+depends := $(srcs:%.cpp=%.d)
+-include $(depends)
 
 .PHONY: all
 all: $(NAME)
 
 $(NAME): $(objs)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(objs)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $(NAME) $(objs)
 
 .cpp.o:
-	$(CXX) $(CXXFLAGS) -c -MMD -MP -MF $(<:.cpp=.d) -o $@ $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -MMD -MP -MF $(<:.cpp=.d) -o $@ $<
 
--include $(depends)
 .PHONY: clean
 clean:
 	$(RM) -rf *.dSYM

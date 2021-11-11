@@ -10,7 +10,6 @@ srcs     := ./srcs/main.cpp \
 			./srcs/Weapon.cpp
 
 objs     := $(srcs:.cpp=.o)
--include $(depends)
 depends  := $(srcs:%.cpp=%.d)
 
 .PHONY: all
@@ -22,6 +21,7 @@ $(NAME): $(objs)
 .cpp.o:
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -MMD -MP -MF $(<:.cpp=.d) -o $@ $<
 
+-include $(depends)
 .PHONY: clean
 clean:
 	$(RM) -rf *.dSYM

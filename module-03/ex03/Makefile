@@ -1,6 +1,6 @@
 NAME := ex02
 CXX := clang++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
 
 INCLUDE := -I./includes
 srcs := ./srcs/main.cpp \

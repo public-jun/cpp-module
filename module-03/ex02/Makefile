@@ -6,7 +6,7 @@ INCLUDE := -I./includes
 srcs := ./srcs/main.cpp \
 		./srcs/ClapTrap.cpp \
 		./srcs/ScavTrap.cpp \
-		# ./srcs/FragTrap.cpp
+		./srcs/FragTrap.cpp
 objs := $(srcs:.cpp=.o)
 depends := $(srcs:%.cpp=%.d)
 

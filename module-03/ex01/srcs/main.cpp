@@ -6,8 +6,9 @@ void print_profile(const ScavTrap &a)
 	std::cout << "name :" << a.get_name() << std::endl;
 	std::cout << "hitpoints :" << a.get_hitpoints() << std::endl;
 	std::cout << "energy_points :" << a.get_energy_points() << std::endl;
-	std::cout << "attack_damage :" << a.get_attak_damage() << std::endl;
-	std::cout << "<<<<<<<<<<<<<<<<<<<\n" << std::endl;
+	std::cout << "attack_damage :" << a.get_attack_damage() << std::endl;
+	std::cout << "<<<<<<<<<<<<<<<<<<<\n"
+			  << std::endl;
 }
 
 int main(void)

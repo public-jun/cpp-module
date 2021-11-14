@@ -1,19 +1,37 @@
-#include <ClapTrap.hpp>
+#include <ScavTrap.hpp>
+
+void print_profile(const ScavTrap &a)
+{
+	std::cout << "\n>>>>>>>>>>>>>>>>>>>" << std::endl;
+	std::cout << "name :" << a.get_name() << std::endl;
+	std::cout << "hitpoints :" << a.get_hitpoints() << std::endl;
+	std::cout << "energy_points :" << a.get_energy_points() << std::endl;
+	std::cout << "attack_damage :" << a.get_attak_damage() << std::endl;
+	std::cout << "<<<<<<<<<<<<<<<<<<<\n" << std::endl;
+}
 
 int main(void)
 {
-	ClapTrap bob("bob");
+	ScavTrap no_name;
 
-	std::cout << "name :" << bob.get_name() << std::endl;
-	std::cout << "hitpoints :" << bob.get_hitpoints() << std::endl;
-	std::cout << "energy_points :" << bob.get_energy_points() << std::endl;
-	std::cout << "attack_damage :" << bob.get_attak_damage() << std::endl;
+	print_profile(no_name);
+	no_name.takeDamage(3);
 
-	bob.attack("something!");
+	ScavTrap bob("bob");
+	print_profile(bob);
+	bob.takeDamage(3);
+
+	ScavTrap bob2(bob);
+	print_profile(bob2);
 	bob.takeDamage(10);
-	bob.beRepaired(100);
-	bob.takeDamage(50);
-	bob.takeDamage(20);
-	bob.beRepaired(12);
-	bob.takeDamage(42);
+
+	ScavTrap bob3;
+	bob3 = bob;
+	print_profile(bob3);
+
+	bob.attack("tokyo");
+	bob.beRepaired(30);
+	bob.guardGate();
+
+	std::cout << std::endl;
 }

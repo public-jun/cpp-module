@@ -1,13 +1,13 @@
 NAME := ex02
 CXX := clang++
-CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic -Wshadow
 
 INCLUDE := -I./includes
 srcs := ./srcs/main.cpp \
 		./srcs/ClapTrap.cpp \
 		./srcs/ScavTrap.cpp \
 		./srcs/FragTrap.cpp \
-		./srcs/DiamondTrap.cpp \
+		./srcs/DiamondTrap.cpp
 objs := $(srcs:.cpp=.o)
 depends := $(srcs:%.cpp=%.d)
 

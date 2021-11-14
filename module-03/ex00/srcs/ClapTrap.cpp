@@ -23,7 +23,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 		name_ = other.get_name();
 		hitpoints_ = other.get_hitpoints();
 		energy_points_ = other.get_energy_points();
-		attack_damage_ = other.get_attak_damage();
+		attack_damage_ = other.get_attack_damage();
 	}
 	return (*this);
 }
@@ -48,17 +48,17 @@ unsigned int ClapTrap::get_energy_points(void) const
 	return (energy_points_);
 }
 
-unsigned int ClapTrap::get_attak_damage(void) const
+unsigned int ClapTrap::get_attack_damage(void) const
 {
 	return (attack_damage_);
 }
 
 void ClapTrap::attack(std::string const &target)
 {
-	std::cout << "ClapTrap " << name_ \
-			  << " attacks " << target \
-			  << ", causing " << attack_damage_ \
-			  << " points of damage !"  << std::endl;
+	std::cout << "ClapTrap " << name_
+			  << " attacks " << target
+			  << ", causing " << attack_damage_
+			  << " points of damage !" << std::endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)

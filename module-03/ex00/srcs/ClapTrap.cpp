@@ -64,13 +64,13 @@ void ClapTrap::attack(std::string const &target)
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	hitpoints_ = (hitpoints_ < amount ? 0 : hitpoints_ - amount);
-	std::cout << "ClapTrap" << name_ << " took " << amount << " points of damage. "
+	std::cout << "ClapTrap " << name_ << " took " << amount << " points of damage. "
 			  << hitpoints_ << " HP is left !" << std::endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	hitpoints_ += amount;
-	std::cout << "ClapTrap" << name_ << " is repaired " << amount << " points. "
+	std::cout << "ClapTrap " << name_ << " is repaired " << amount << " points. "
 			  << hitpoints_ << " HP is left !" << std::endl;
 }

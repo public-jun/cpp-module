@@ -1,6 +1,6 @@
-#include <ScavTrap.hpp>
+#include <FragTrap.hpp>
 
-void print_profile(const ScavTrap &a)
+void print_profile(const FragTrap &a)
 {
 	std::cout << "\n>>>>>>>>>>>>>>>>>>>" << std::endl;
 	std::cout << "name :" << a.get_name() << std::endl;
@@ -12,26 +12,26 @@ void print_profile(const ScavTrap &a)
 
 int main(void)
 {
-	ScavTrap no_name;
+	FragTrap no_name;
 
 	print_profile(no_name);
 	no_name.takeDamage(3);
 
-	ScavTrap bob("bob");
+	FragTrap bob("bob");
 	print_profile(bob);
 	bob.takeDamage(3);
 
-	ScavTrap bob2(bob);
+	FragTrap bob2(bob);
 	print_profile(bob2);
 	bob.takeDamage(10);
 
-	ScavTrap bob3;
+	FragTrap bob3;
 	bob3 = bob;
 	print_profile(bob3);
 
 	bob.attack("tokyo");
 	bob.beRepaired(30);
-	bob.guardGate();
+	bob.highFivesGuys();
 
 	std::cout << std::endl;
 }

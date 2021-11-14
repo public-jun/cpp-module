@@ -16,7 +16,7 @@ class ClapTrap
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &other);
 		ClapTrap &operator=(const ClapTrap &other);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		const std::string &get_name(void) const;
 		unsigned int get_hitpoints(void) const;

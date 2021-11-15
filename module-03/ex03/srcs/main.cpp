@@ -1,42 +1,60 @@
 #include <DiamondTrap.hpp>
+#include <iostream>
+#include <color.hpp>
 
-void print_profile(const DiamondTrap &a)
-{
-	std::cout << "\n>>>>>>>>>>>>>>>>>>>" << std::endl;
-	std::cout << "name :" << a.get_name() << std::endl;
-	std::cout << "clap_name :" << a.ClapTrap::get_name() << std::endl;
-	std::cout << "hitpoints :" << a.get_hitpoints() << std::endl;
-	std::cout << "energy_points :" << a.get_energy_points() << std::endl;
-	std::cout << "attack_damage :" << a.get_attack_damage() << std::endl;
-	std::cout << "<<<<<<<<<<<<<<<<<<<\n"
-			  << std::endl;
-}
+//Clap RED
+//Frag YELLOW
+//Scav GREEN
 
 int main(void)
 {
-	DiamondTrap no_name;
-	print_profile(no_name);
+	{
+		DiamondTrap dia("dia");
+		dia.print_status();
+		dia.attack("42tokyo");
+		dia.print_status();
+		dia.takeDamage(10);
+		dia.print_status();
+		dia.beRepaired(20);
+		dia.print_status();
+		dia.highFivesGuys();
+		dia.guardGate();
+		dia.whoAmI();
+		std::cout << std::endl;
+	}
 
-	DiamondTrap bob("bob");
-	print_profile(bob);
-	no_name.takeDamage(3);
-	no_name = bob;
-	print_profile(no_name);
+	// {
+	// 	ClapTrap clap("clap");
+	// 	clap.print_status();
+	// 	clap.attack("42tokyo");
+	// 	clap.print_status();
+	// 	clap.takeDamage(10);
+	// 	clap.print_status();
+	// 	std::cout << std::endl;
+	// }
 
-	print_profile(bob);
-	bob.takeDamage(3);
+	// {
+	// 	FragTrap frag("frag");
+	// 	frag.print_status();
+	// 	frag.attack("42tokyo");
+	// 	frag.print_status();
+	// 	frag.takeDamage(10);
+	// 	frag.print_status();
+	// 	frag.highFivesGuys();
+	// 	std::cout << std::endl;
+	// }
 
-	DiamondTrap bob2(bob);
-	print_profile(bob2);
-	bob.takeDamage(10);
+	// {
+	// 	ScavTrap scav("scav");
+	// 	scav.print_status();
+	// 	scav.attack("42tokyo");
+	// 	scav.print_status();
+	// 	scav.takeDamage(10);
+	// 	scav.print_status();
+	// 	scav.guardGate();
+	// 	std::cout << std::endl;
+	// }
 
-	DiamondTrap bob3;
-	bob3 = bob;
-	print_profile(bob3);
-
-	bob.attack("tokyo");
-	bob.beRepaired(30);
-	bob.highFivesGuys();
 
 	std::cout << std::endl;
 }

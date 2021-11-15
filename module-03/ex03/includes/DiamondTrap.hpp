@@ -1,6 +1,7 @@
 #ifndef DIAMONDTRAP_HPP
 #define DIAMONDTRAP_HPP
 
+#include <string>
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
@@ -21,6 +22,8 @@ class DiamondTrap : public FragTrap, public ScavTrap
 
 		void attack(std::string const &target);
 		void whoAmI();
+
+		void print_status() const;
 };
 
 #endif

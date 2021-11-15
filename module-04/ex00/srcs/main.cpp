@@ -1,13 +1,27 @@
 #include <Animal.hpp>
+#include <Dog.hpp>
 #include <string>
 #include <iostream>
 
 int main(void)
 {
-	Animal *animal1 = new Animal();
+	const Animal *meta = new Animal();
+	const Animal *j = new Dog();
+	// const Animal *i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	// std::cout << i->getType() << " " << std::endl;
+	// i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
 
-	std::cout << animal1->get_type() << std::endl;
-	animal1->makeSound();
-	
-	delete animal1;
+	delete meta;
+	delete j;
+
+	// Animal *animal1 = new Animal();
+
+	// std::cout << animal1->get_type() << std::endl;
+	// animal1->makeSound();
+
+	// delete animal1;
+
 }

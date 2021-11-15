@@ -1,4 +1,5 @@
 #include <ScavTrap.hpp>
+#include <iostream>
 
 ScavTrap::ScavTrap()
 {
@@ -31,7 +32,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 		name_ = other.get_name();
 		hitpoints_ = other.get_hitpoints();
 		energy_points_ = other.get_energy_points();
-		attack_damage_ = other.get_attack_damagee();
+		attack_damage_ = other.get_attack_damage();
 	}
 	return (*this);
 }

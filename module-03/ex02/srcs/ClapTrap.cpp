@@ -1,4 +1,5 @@
 #include <ClapTrap.hpp>
+#include <iostream>
 
 ClapTrap::ClapTrap() : name_("no name"), hitpoints_(10), energy_points_(10), attack_damage_(0)
 {
@@ -23,7 +24,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 		name_ = other.get_name();
 		hitpoints_ = other.get_hitpoints();
 		energy_points_ = other.get_energy_points();
-		attack_damage_ = other.get_attack_damagee();
+		attack_damage_ = other.get_attack_damage();
 	}
 	return (*this);
 }
@@ -48,7 +49,7 @@ unsigned int ClapTrap::get_energy_points(void) const
 	return (energy_points_);
 }
 
-unsigned int ClapTrap::get_attack_damagee(void) const
+unsigned int ClapTrap::get_attack_damage(void) const
 {
 	return (attack_damage_);
 }

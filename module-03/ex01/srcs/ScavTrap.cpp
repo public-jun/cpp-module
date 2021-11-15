@@ -1,4 +1,5 @@
 #include <ScavTrap.hpp>
+#include <iostream>
 
 ScavTrap::ScavTrap()
 {

@@ -1,6 +1,6 @@
-#include <iostream>
 #include <ScavTrap.hpp>
 #include <color.hpp>
+#include <iostream>
 
 ScavTrap::ScavTrap()
 {

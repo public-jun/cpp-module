@@ -1,6 +1,6 @@
-#include <iostream>
 #include <DiamondTrap.hpp>
 #include <color.hpp>
+#include <iostream>
 
 DiamondTrap::DiamondTrap() : ClapTrap("no name_clap_name"), name_("no name")
 {

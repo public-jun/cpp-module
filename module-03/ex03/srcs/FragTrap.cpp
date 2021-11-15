@@ -1,6 +1,6 @@
-#include <iostream>
 #include <FragTrap.hpp>
 #include <color.hpp>
+#include <iostream>
 
 FragTrap::FragTrap()
 {

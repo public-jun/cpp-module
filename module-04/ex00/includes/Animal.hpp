@@ -13,6 +13,8 @@ class Animal
 
 		const std::string &get_type() const;
 
+		void makeSound() const;
+
 	protected:
 		std::string type_;
 };

@@ -41,3 +41,11 @@ const std::string &Animal::get_type() const
 {
 	return (this->type_);
 }
+
+void Animal::makeSound() const
+{
+	std::cout << RED
+			  << "Animal make sound: ..."
+			  << END
+			  << std::endl;
+}

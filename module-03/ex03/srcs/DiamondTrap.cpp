@@ -1,4 +1,6 @@
+#include <iostream>
 #include <DiamondTrap.hpp>
+#include <color.hpp>
 
 DiamondTrap::DiamondTrap() : ClapTrap("no name_clap_name"), name_("no name")
 {
@@ -57,6 +59,18 @@ void DiamondTrap::attack(std::string const &target)
 
 void DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap name is" << get_name() << "." << std::endl;
-	std::cout << "ClapTrap name is" << get_clap_name() << "." << std::endl;
+	std::cout << "DiamondTrap name is " << get_name() << "." << std::endl;
+	std::cout << "ClapTrap name is " << get_clap_name() << "." << std::endl;
+}
+
+void DiamondTrap::print_status() const
+{
+	std::cout << "\n" << ">>>>>>>>>>>>>>>>>>>" << std::endl;
+	std::cout << WHITE << "name " << END << ":" << this->get_name() << std::endl;
+	std::cout << RED << "clap_name " << END << ":" << this->ClapTrap::get_name() << std::endl;
+	std::cout << YELLOW << "hitpoints " << END << ":"<< this->get_hitpoints() << std::endl;
+	std::cout << GREEN << "energy_points " << END << ":" << this->get_energy_points() << std::endl;
+	std::cout << YELLOW << "attack_damage " << END << ":" << this->get_attack_damage() << std::endl;
+	std::cout << "<<<<<<<<<<<<<<<<<<<\n"
+			  << std::endl;
 }

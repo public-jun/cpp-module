@@ -1,4 +1,6 @@
 #include <FragTrap.hpp>
+#include <string>
+#include <iostream>
 
 void print_profile(const FragTrap &a)
 {

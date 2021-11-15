@@ -2,6 +2,7 @@
 #define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
+#include <string>
 
 class ScavTrap : public ClapTrap
 {

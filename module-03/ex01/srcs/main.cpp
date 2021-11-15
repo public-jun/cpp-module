@@ -1,4 +1,5 @@
 #include <ScavTrap.hpp>
+#include <iostream>
 
 void print_profile(const ScavTrap &a)
 {

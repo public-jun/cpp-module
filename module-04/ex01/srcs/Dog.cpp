@@ -31,18 +31,14 @@ Dog::Dog(const Dog &other) : brain_(new Brain())
 
 Dog &Dog::operator=(const Dog &other)
 {
-	std::cout << GREEN
-			  << "Dog Assignnation operator called"
-			  << END
-			  << std::endl;
 	if (this != &other)
 	{
 		type_ = other.getType();
 
-		Brain *p = new Brain();
-		*p = *(other.brain_);
+		Brain *new_brain = new Brain();
+		*new_brain = *(other.brain_);
 		delete brain_;
-		brain_ = p;
+		brain_ = new_brain;
 	}
 	return (*this);
 }
@@ -62,4 +58,19 @@ void Dog::makeSound() const
 			  << "Dog make sound: bow wow!!"
 			  << END
 			  << std::endl;
+}
+
+const Brain *Dog::get_brain() const
+{
+	return (this->brain_);
+}
+
+const std::string &Dog::get_brain_idea(int index) const
+{
+	return (brain_->get_idea(index));
+}
+
+void Dog::set_brain_idea(int index, std::string idea)
+{
+	brain_->set_idea(index, idea);
 }

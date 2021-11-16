@@ -29,7 +29,7 @@ Cat &Cat::operator=(const Cat &other)
 Cat::~Cat()
 {
 	std::cout << BLUE
-			  << "Cat copy constructor called"
+			  << "Cat destructor called"
 			  << END
 			  << std::endl;
 }

@@ -7,7 +7,7 @@ srcs := ./srcs/main.cpp \
 		./srcs/Animal.cpp \
 		./srcs/Dog.cpp \
 		./srcs/Cat.cpp \
-		# ./srcs/Brain.cpp
+		./srcs/Brain.cpp
 objs := $(srcs:.cpp=.o)
 depends := $(srcs:%.cpp=%.d)
 

@@ -13,8 +13,12 @@ class Brain
 		Brain &operator=(const Brain &other);
 		~Brain();
 
+		bool is_valid_index(int index) const;
+		const std::string &get_idea(int index) const;
+		void set_idea(int index, std::string idea);
+
 	private:
-		std::string ideas[NUM_IDEAS];
+		std::string ideas_[NUM_IDEAS];
 };
 
 #endif

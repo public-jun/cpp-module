@@ -24,21 +24,30 @@ int main(void)
 		// delete i;
 	}
 	{
-		std::cout << BOLD << "BRAINTEST" << END << std::endl;
-		Brain *brain = new Brain();
-		for(size_t i = 0; i < 100; ++i)
-		{
-			brain->set_idea(i, "BRAIN" + std::to_string(i));
-		}
-		Brain brain_a = *brain;
+		// std::cout << BOLD << "BRAINTEST" << END << std::endl;
+		// Brain *brain = new Brain();
+		// for(size_t i = 0; i < 100; ++i)
+		// {
+		// 	brain->set_idea(i, "BRAIN" + std::to_string(i));
+		// }
+		// Brain brain_a = *brain;
 		// for(size_t i = 0; i < 100; ++i)
 		// {
 		// 	std::cout << brain->get_idea(i) << std::endl;
 		// }
-		for(size_t i = 0; i < 100; ++i)
-		{
-			std::cout << brain_a.get_idea(i) << std::endl;
-		}
-		delete brain;
+		// for(size_t i = 0; i < 100; ++i)
+		// {
+		// 	std::cout << brain_a.get_idea(i) << std::endl;
+		// }
+		// delete brain;
+	}
+
+	{
+		// Dog dog1;
+		// Dog dog2 = dog1;
+
+		// std::cout << dog1.getType() << std::endl;
+		// std::cout << dog2.getType() << std::endl;
+		// delete dog1;
 	}
 }

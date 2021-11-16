@@ -2,6 +2,7 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 #include <string>
 
 class Dog : public Animal
@@ -13,6 +14,9 @@ class Dog : public Animal
 		virtual ~Dog();
 
 		virtual void makeSound() const;
+
+	private:
+		Brain *brain_;
 };
 
 #endif

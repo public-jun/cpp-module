@@ -5,7 +5,11 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDE := -I./includes
 
 srcs := ./srcs/main.cpp \
-		./srcs/AMateria.cpp
+		./srcs/AMateria.cpp \
+		./srcs/Character.cpp \
+		./srcs/Cure.cpp \
+		./srcs/Ice.cpp \
+		./srcs/MateriaSource.cpp
 
 objs := $(srcs:.cpp=.o)
 depends := $(srcs:%.cpp=%.d)

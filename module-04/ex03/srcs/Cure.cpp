@@ -2,7 +2,7 @@
 #include <color.hpp>
 #include <iostream>
 
-Cure::Cure() : type_("cure")
+Cure::Cure() : AMateria("cure")
 {
 }
 

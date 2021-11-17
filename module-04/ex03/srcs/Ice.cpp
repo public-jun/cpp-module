@@ -2,7 +2,7 @@
 #include <color.hpp>
 #include <iostream>
 
-Ice::Ice() : type_("ice")
+Ice::Ice() : AMateria("ice")
 {
 }
 
@@ -24,7 +24,7 @@ Ice::~Ice()
 {
 }
 
-AMateria *Ice::clone()
+AMateria *Ice::clone() const
 {
 	return (new Ice(*this));
 }

@@ -15,13 +15,14 @@ class Character : public ICharacter
 
 		Character();
 
+		bool is_valid_index(int idx) const;
+
 	public:
 		Character(std::string name);
 		Character(const Character &other);
 		Character &operator=(const Character &other);
 		virtual ~Character();
 
-		bool is_valid_index(int idx) const;
 
 		virtual std::string const &getName() const;
 		const AMateria *getMateria(int idx) const;
@@ -29,8 +30,6 @@ class Character : public ICharacter
 		virtual void equip(AMateria *m);
 		virtual void unequip(int idx);
 		virtual void use(int idx, ICharacter &target);
-
-
-}
+};
 
 #endif

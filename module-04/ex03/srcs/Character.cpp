@@ -10,6 +10,15 @@ Character::Character()
 	}
 }
 
+bool Character::is_valid_index(int idx) const
+{
+	if (idx >= 0 && idx < NUM_MATERIA)
+	{
+		return (true);
+	}
+	return (false);
+}
+
 Character::Character(std::string name) : name_(name)
 {
 	for (size_t i = 0; i < NUM_MATERIA; ++i)
@@ -30,6 +39,7 @@ Character &Character::operator=(const Character &other)
 		name_ = other.getName();
 		for (int i = 0; i < NUM_MATERIA; ++i)
 		{
+			const AMateria *tmp = other.getMateria(i);
 			if (inventory_[i])
 			{
 				inventory_[i] = tmp->clone();
@@ -54,14 +64,6 @@ Character::~Character()
 	}
 }
 
-bool Character::is_vaid_index(int idx) const
-{
-	if (idx >= 0 && idx < NUM_MATERIA)
-	{
-		return (true);
-	}
-	return (false);
-}
 
 std::string const &Character::getName() const
 {
@@ -94,7 +96,7 @@ void Character::unequip(int idx)
 {
 	if (!is_valid_index(idx) || !inventory_[idx])
 	{
-		return
+		return ;
 	}
 	inventory_[idx] = NULL;
 	for (int i = idx + 1; i < NUM_MATERIA; ++i)
@@ -110,7 +112,7 @@ void Character::unequip(int idx)
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (!is_vaid_index(idx) || !inventory_[i])
+	if (!is_valid_index(idx) || !inventory_[idx])
 	{
 		return ;
 	}

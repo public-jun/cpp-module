@@ -26,7 +26,6 @@ Bureaucrat::Bureaucrat(int grade) : name_("no_name"), grade_(grade)
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
 {
-	//gradeのエラー処理
 	if (IsGradeToohigh(grade))
 	{
 		throw (GradeTooHighException("Exception in constructor. Grade is too HIGH!!"));

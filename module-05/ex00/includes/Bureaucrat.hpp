@@ -22,8 +22,8 @@ class Bureaucrat
 		const std::string GetName() const;
 		int GetGrade() const;
 
-		static bool IsGradeToohigh(int grade);
-		static bool IsGradeTooLow(int grade);
+		bool IsGradeToohigh(int grade);
+		bool IsGradeTooLow(int grade);
 
 		void IncrementGrade(); // 3->2
 		void DecrementGrade(); // 140-> 141

@@ -57,7 +57,6 @@ void TestDecrement(int grade)
 	try
 	{
 		Bureaucrat a(name, grade);
-		//before grade
 		std::cout << "before: " << std::to_string(a.GetGrade()) << std::endl;
 		std::cout << BOLD << a << END << "\n" << std::endl;
 		a.DecrementGrade();

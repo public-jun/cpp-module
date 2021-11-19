@@ -22,11 +22,9 @@ class Bureaucrat
 		const std::string GetName() const;
 		int GetGrade() const;
 
-		// bool
 		static bool IsGradeToohigh(int grade);
 		static bool IsGradeTooLow(int grade);
 
-		//rangeを超えると同じ例外を投げる
 		void IncrementGrade(); // 3->2
 		void DecrementGrade(); // 140-> 141
 
@@ -53,7 +51,6 @@ class Bureaucrat
 		private :
 			const std::string name_;
 			// 1(high) <= range <= 150(low)
-			// 無効なgradeを設定すると例外投げる
 			int grade_;
 };
 

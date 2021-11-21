@@ -1,9 +1,10 @@
-NAME := ex00
+NAME := convert
 CXX := clang++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 
 INCLUDE := -I./includes
-srcs := ./srcs/main.cpp
+srcs := ./srcs/main.cpp \
+		./srcs/Scalar.cpp
 
 objs := $(srcs:.cpp=.o)
 depends := $(srcs:.cpp=.d)

@@ -18,7 +18,7 @@ $(NAME): $(objs)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $(NAME) $(objs)
 
 .cpp.o:
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -MMD -MP -MF $(depends) -o $@ $<
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -MMD -MP -MF $(<:.cpp=.d) -o $@ $<
 
 -include $(depends)
 .PHONY: clean

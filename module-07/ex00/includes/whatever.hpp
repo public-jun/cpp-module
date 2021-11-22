@@ -1,10 +1,6 @@
 #ifndef WHATEVER_HPP
 #define WHATEVER_HPP
 
-#include <color.hpp>
-#include <iostream>
-#include <string>
-
 //template <class T>
 // void write(T, t);
 

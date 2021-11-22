@@ -39,15 +39,15 @@ void minMaxTest(T &a, T &b)
 			  << END << std::endl;
 
 	std::cout << "min: "
-			  << min(a, b)
+			  << ::min(a, b)
 			  << "("
-			  << &min(a, b)
+			  << &(::min(a, b))
 			  << ")" << std::endl;
 
 	std::cout << "max: "
-			  << max(a, b)
+			  << ::max(a, b)
 			  << "("
-			  << &max(a, b)
+			  << &(::max(a, b))
 			  << ")" << std::endl;
 }
 

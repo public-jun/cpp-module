@@ -15,6 +15,21 @@ void printTestTitle(std::string title)
 
 int main(void)
 {
+	{
+		int a = 2;
+		int b = 3;
+		::swap(a, b);
+		std::cout << "a = " << a << ", b = " << b << std::endl;
+		std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
+		std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
+		std::string c = "chaine1";
+		std::string d = "chaine2";
+		::swap(c, d);
+		std::cout << "c = " << c << ", d = " << d << std::endl;
+		std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
+		std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
+	}
+
 	printTestTitle("SWAP ");
 	{
 		int int_a = 10;
@@ -41,6 +56,9 @@ int main(void)
 		int i_c = 42;
 		int i_d = 42;
 		minMaxTest(i_c, i_d);
+		std::string str_a = "hoge42";
+		std::string str_b = "hoge100";
+		minMaxTest(str_a, str_b);
 		float float_a = 42.424242f;
 		float float_b = 10.05f;
 		minMaxTest(float_a, float_b);
@@ -48,4 +66,5 @@ int main(void)
 		double double_b = 1234.567;
 		minMaxTest(double_a, double_b);
 	}
+	return 0;
 }

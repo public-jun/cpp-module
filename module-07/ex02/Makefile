@@ -1,5 +1,5 @@
-NAME := ex00
-CXX :=clang++
+NAME := ex01
+CXX := clang++
 CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 
 INCLUDE := -I./includes

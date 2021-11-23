@@ -3,6 +3,62 @@
 #include <string>
 #include <iostream>
 
+#define MAX_VAL 750
+
+// subject main
+
+int main(int, char**)
+{
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
+    try
+    {
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
+    return 0;
+}
+
+// original main
+
 void printTitle(std::string title)
 {
 	std::cout << "\n"
@@ -27,105 +83,105 @@ void errorTEST(int index, unsigned int size, Array<int> &my_array)
 	}
 }
 
-int main(void)
-{
-	{
-		printTitle("----CONSTRUCTOR TEST----");
-		Array<int> array_empty;
-		Array<int> array_42(42);
+// int main(void)
+// {
+// 	{
+// 		printTitle("----CONSTRUCTOR TEST----");
+// 		Array<int> array_empty;
+// 		Array<int> array_42(42);
 
-		Array<int> assign_array_a(10);
-		Array<int> assign_array_b(20);
+// 		Array<int> assign_array_a(10);
+// 		Array<int> assign_array_b(20);
 
-		assign_array_a = assign_array_b;
+// 		assign_array_a = assign_array_b;
 
-		Array<int> array_copy_empty = array_empty;
-		printTitle("----DESTRUCTOR----");
-	}
+// 		Array<int> array_copy_empty = array_empty;
+// 		printTitle("----DESTRUCTOR----");
+// 	}
 
-	{
-		printTitle("----CONST CONSTRUCTOR TEST----");
-		const Array<int> array_empty;
-		const Array<int> array_42(42);
+// 	{
+// 		printTitle("----CONST CONSTRUCTOR TEST----");
+// 		const Array<int> array_empty;
+// 		const Array<int> array_42(42);
 
-		const Array<int> assign_array_a(10);
-		const Array<int> assign_array_b(20);
+// 		const Array<int> assign_array_a(10);
+// 		const Array<int> assign_array_b(20);
 
-		const Array<int> array_copy_empty = array_empty;
-		printTitle("----DESTRUCTOR----");
-	}
+// 		const Array<int> array_copy_empty = array_empty;
+// 		printTitle("----DESTRUCTOR----");
+// 	}
 
-	{
-		printTitle("----INT ARRAY TEST----");
-		const unsigned int size = 5;
-		Array<int> my_array(size);
-		int *num_array = new int[size];
+// 	{
+// 		printTitle("----INT ARRAY TEST----");
+// 		const unsigned int size = 5;
+// 		Array<int> my_array(size);
+// 		int *num_array = new int[size];
 
-		srand(time(NULL));
-		for (unsigned int i = 0; i < size; ++i)
-		{
-			const int value = rand();
-			my_array[i] = value;
-			num_array[i] = value;
-		}
-		for (unsigned int i = 0; i < size; ++i)
-		{
-			std::cout << "my_array : " << my_array[i] << std::endl;
-			std::cout << "num_array: " << num_array[i] << std::endl;
-			if (my_array[i] != num_array[i])
-			{
-				std::cout << RED << "Not same value!!" << END << std::endl;
-				break;
-			}
-			else
-			{
-				std::cout << GREEN << "OK!" << END << std::endl;
-			}
-		}
-		delete[] num_array;
-	}
+// 		srand(time(NULL));
+// 		for (unsigned int i = 0; i < size; ++i)
+// 		{
+// 			const int value = rand();
+// 			my_array[i] = value;
+// 			num_array[i] = value;
+// 		}
+// 		for (unsigned int i = 0; i < size; ++i)
+// 		{
+// 			std::cout << "my_array : " << my_array[i] << std::endl;
+// 			std::cout << "num_array: " << num_array[i] << std::endl;
+// 			if (my_array[i] != num_array[i])
+// 			{
+// 				std::cout << RED << "Not same value!!" << END << std::endl;
+// 				break;
+// 			}
+// 			else
+// 			{
+// 				std::cout << GREEN << "OK!" << END << std::endl;
+// 			}
+// 		}
+// 		delete[] num_array;
+// 	}
 
-	printTitle("----STRING ARRAY TEST----");
-	{
-		const unsigned int size = 10;
-		Array<std::string> my_array(size);
-		std::string *string_array = new std::string[size];
+// 	printTitle("----STRING ARRAY TEST----");
+// 	{
+// 		const unsigned int size = 10;
+// 		Array<std::string> my_array(size);
+// 		std::string *string_array = new std::string[size];
 
-		srand(time(NULL));
-		const std::string array[5] = {"42Tokyo", "42Paris", "42Seoul", "Ecole42", "42SV"};
-		for (unsigned int i = 0; i < size; ++i)
-		{
-			const std::string value = array[rand() % 5];
-			my_array[i] = value;
-			string_array[i] = value;
-		}
-		for (unsigned int i = 0; i < size; ++i)
-		{
-			std::cout << "my_array    : " << my_array[i] << std::endl;
-			std::cout << "string_array: " << string_array[i] << std::endl;
-			if (my_array[i] != string_array[i])
-			{
-				std::cout << RED << "Not same value!!" << END << std::endl;
-				break;
-			}
-			else
-			{
-				std::cout << GREEN << "OK!" << END << std::endl;
-			}
-		}
-		delete[] string_array;
-	}
+// 		srand(time(NULL));
+// 		const std::string array[5] = {"42Tokyo", "42Paris", "42Seoul", "Ecole42", "42SV"};
+// 		for (unsigned int i = 0; i < size; ++i)
+// 		{
+// 			const std::string value = array[rand() % 5];
+// 			my_array[i] = value;
+// 			string_array[i] = value;
+// 		}
+// 		for (unsigned int i = 0; i < size; ++i)
+// 		{
+// 			std::cout << "my_array    : " << my_array[i] << std::endl;
+// 			std::cout << "string_array: " << string_array[i] << std::endl;
+// 			if (my_array[i] != string_array[i])
+// 			{
+// 				std::cout << RED << "Not same value!!" << END << std::endl;
+// 				break;
+// 			}
+// 			else
+// 			{
+// 				std::cout << GREEN << "OK!" << END << std::endl;
+// 			}
+// 		}
+// 		delete[] string_array;
+// 	}
 
-	{
-		printTitle("----ERROR TEST----");
-		const unsigned int size = 42;
-		Array<int> my_array(size);
+// 	{
+// 		printTitle("----ERROR TEST----");
+// 		const unsigned int size = 42;
+// 		Array<int> my_array(size);
 
-		errorTEST(0, size, my_array);
-		errorTEST(41, size, my_array);
-		errorTEST(42, size, my_array);
+// 		errorTEST(0, size, my_array);
+// 		errorTEST(41, size, my_array);
+// 		errorTEST(42, size, my_array);
 
-		printTitle("----DESTRUCTOR----");
-	}
-	return 0;
-}
+// 		printTitle("----DESTRUCTOR----");
+// 	}
+// 	return 0;
+// }

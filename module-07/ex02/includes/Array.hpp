@@ -17,6 +17,7 @@ class Array
 		~Array();
 
 		T &operator[](unsigned int n);
+		const T &operator[](unsigned int n) const;
 
 		unsigned int size() const;
 		const T *getArray() const;
@@ -79,6 +80,16 @@ Array<T>::~Array()
 
 template <class T>
 T &Array<T>::operator[](unsigned int n)
+{
+	if (n_ <= n)
+	{
+		throw std::exception();
+	}
+	return array_[n];
+}
+
+template <class T>
+const T &Array<T>::operator[](unsigned int n) const
 {
 	if (n_ <= n)
 	{

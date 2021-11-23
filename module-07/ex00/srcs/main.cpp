@@ -7,7 +7,7 @@
 void printTestTitle(std::string title)
 {
 	std::cout << "\n"
-			  << BACK_GRAY
+			  << CYAN
 			  << title
 			  << " TEST"
 			  << END << std::endl;

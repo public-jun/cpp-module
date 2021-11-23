@@ -1,8 +1,10 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <color.hpp>
 #include <string>
 #include <iostream>
+#include <stdexcept>
 
 template <class T>
 class Array
@@ -14,7 +16,10 @@ class Array
 		Array &operator=(const Array &other);
 		~Array();
 
-		unsigned int getN() const;
+		T &operator[](unsigned int n);
+		const T &operator[](unsigned int n) const;
+
+		unsigned int size() const;
 		const T *getArray() const;
 
 	private:
@@ -25,21 +30,21 @@ class Array
 template <class T>
 Array<T>::Array() : n_(0), array_(new T[0]())
 {
-	std::cout << "defalt constructor called" << std::endl;
+	std::cout << BLUE << "defalt constructor called" << END << std::endl;
 }
 
 template <class T>
 Array<T>::Array(unsigned int n) : n_(n), array_(new T[n]())
 {
-	std::cout << "constructor called" << std::endl;
+	std::cout << GREEN << "constructor called" << END << std::endl;
 }
 
 template <class T>
-Array<T>::Array(const Array &other) : n_(other.getN()), array_(new T[other.getN()])
+Array<T>::Array(const Array &other) : n_(other.size()), array_(new T[other.size()])
 {
-	std::cout << "copy constructor called" << std::endl;
+	std::cout << CYAN << "copy constructor called" << END << std::endl;
 	const T *other_array = other.getArray();
-	for (unsigned int i = 0; i < other.getN(); ++i)
+	for (unsigned int i = 0; i < other.size(); ++i)
 	{
 		array_[i] = other_array[i];
 	}
@@ -48,10 +53,10 @@ Array<T>::Array(const Array &other) : n_(other.getN()), array_(new T[other.getN(
 template <class T>
 Array<T> &Array<T>::operator=(const Array &other)
 {
-	std::cout << "assignment operator called" << std::endl;
+	std::cout << YELLOW << "assignment operator called" << END << std::endl;
 	if (this != &other)
 	{
-		unsigned int size = other.getN();
+		unsigned int size = other.size();
 		const T *array = other.getArray();
 
 		n_ = size;
@@ -69,12 +74,32 @@ Array<T> &Array<T>::operator=(const Array &other)
 template <class T>
 Array<T>::~Array()
 {
-	std::cout << "destructor called" << std::endl;
+	std::cout << RED << "destructor called" << END <<std::endl;
 	delete [] array_;
 }
 
 template <class T>
-unsigned int Array<T>::getN() const
+T &Array<T>::operator[](unsigned int n)
+{
+	if (n_ <= n)
+	{
+		throw std::exception();
+	}
+	return array_[n];
+}
+
+template <class T>
+const T &Array<T>::operator[](unsigned int n) const
+{
+	if (n_ <= n)
+	{
+		throw std::exception();
+	}
+	return array_[n];
+}
+
+template <class T>
+unsigned int Array<T>::size() const
 {
 	return n_;
 }

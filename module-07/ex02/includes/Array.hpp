@@ -10,27 +10,79 @@ class Array
 	public:
 		explicit Array();
 		explicit Array(unsigned int n);
+		Array(const Array &other);
+		Array &operator=(const Array &other);
+		~Array();
 
+		unsigned int getN() const;
+		const T *getArray() const;
 
 	private:
-		T *array_;
 		unsigned int n_;
+		T *array_;
 };
 
 template <class T>
-Array<T>::Array()
+Array<T>::Array() : n_(0), array_(new T[0]())
 {
 	std::cout << "defalt constructor called" << std::endl;
-	n_ = 0;
-	array_ = new T[0]();
 }
 
 template <class T>
-Array<T>::Array(unsigned int n)
+Array<T>::Array(unsigned int n) : n_(n), array_(new T[n]())
 {
 	std::cout << "constructor called" << std::endl;
-	n_ = n;
-	array_ = new T[n]();
+}
+
+template <class T>
+Array<T>::Array(const Array &other) : n_(other.getN()), array_(new T[other.getN()])
+{
+	std::cout << "copy constructor called" << std::endl;
+	const T *other_array = other.getArray();
+	for (unsigned int i = 0; i < other.getN(); ++i)
+	{
+		array_[i] = other_array[i];
+	}
+}
+
+template <class T>
+Array<T> &Array<T>::operator=(const Array &other)
+{
+	std::cout << "assignment operator called" << std::endl;
+	if (this != &other)
+	{
+		unsigned int size = other.getN();
+		const T *array = other.getArray();
+
+		n_ = size;
+		T *tmp = new T[size];
+		for (unsigned int i = 0; i < size; ++i)
+		{
+			tmp[i] = array[i];
+		}
+		delete [] array_;
+		array_ = tmp;
+	}
+	return *this;
+}
+
+template <class T>
+Array<T>::~Array()
+{
+	std::cout << "destructor called" << std::endl;
+	delete [] array_;
+}
+
+template <class T>
+unsigned int Array<T>::getN() const
+{
+	return n_;
+}
+
+template <class T>
+const T *Array<T>::getArray() const
+{
+	return array_;
 }
 
 #endif

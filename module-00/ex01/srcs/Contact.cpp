@@ -6,11 +6,12 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:16 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:16:01 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 13:11:39 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Contact.hpp>
+#include <color.hpp>
 
 std::string Contact::field_name_[5] = {
 	"first name",
@@ -30,29 +31,16 @@ Contact::~Contact()
 {
 }
 
-static bool	is_valid_phone_num(std::string phone_num)
-{
-	int	i = 0;
-
-	while (phone_num[i])
-	{
-		if (!isdigit(phone_num[i]))
-			return (false);
-		i += 1;
-	}
-	return (true);
-}
-
 void	Contact::setItem(int index)
 {
 	this->index_ = index;
 	for(int i = FirstName; i <= Secret; i++)
 	{
-		std::cout << this->field_name_[i] << ">> ";
+		std::cout << this->field_name_[i] << " >> ";
 		std::string input;
 		if (!std::getline(std::cin, input))
 		{
-			std::cout << "\nCLOSED BOOK" << std::endl;
+			std::cout << "\nCLOSED BOOK, bye" << std::endl;
 			exit(0);
 		}
 		else if (!input.length())
@@ -60,20 +48,10 @@ void	Contact::setItem(int index)
 			std::cout << "Empty!! can't added" << std::endl;
 			i -= 1;
 		}
-		else if (i == PhoneNum)
-		{
-			if (!is_valid_phone_num(input))
-			{
-				std::cout << "Invalid PHONE NUMBER!!" << std::endl;
-				i -= 1;
-			}
-			else
-				this->item_[i] = input;
-		}
 		else
 			this->item_[i] = input;
 	}
-	std::cout << "A CONTACT ADDED!!"<<std::endl;
+	std::cout << GREEN <<"A CONTACT ADDED!!\n" << END <<std::endl;
 }
 
 void	Contact::showOmitItem(std::string src)

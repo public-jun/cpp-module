@@ -6,11 +6,12 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:40:26 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:47:22by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Phonebook.hpp>
+#include <color.hpp>
 
 Phonebook::Phonebook()
 {
@@ -24,11 +25,18 @@ Phonebook::~Phonebook()
 
 void	Phonebook::showCommandHeader()
 {
-	std::cout << "Enter ADD, SEARCH or EXIT command" << std::endl;
+	std::cout << "Enter "
+			  << BOLD <<"ADD" << END
+			  <<","
+			  << BOLD <<" SEARCH" << END
+			  << " or "
+			  << BOLD <<"EXIT" << END
+			  << " command" << std::endl;
 }
 
 void	Phonebook::addContact()
 {
+	std::cout << "\nEnter contact's infomation" << std::endl;
 	contact_[now_index_].setItem(now_index_);
 	setNowIndex();
 }
@@ -72,11 +80,14 @@ void	Phonebook::searchPhonebook()
 
 int	Phonebook::exitPhonebook()
 {
-	std::cout << "\nCLOSED BOOK" << std::endl;
+	std::cout << "\nCLOSED BOOK, bye" << std::endl;
 	return (0);
 }
 
 void	Phonebook::invalidInput()
 {
-	std::cout << "Input is discarded" << std::endl;
+	std::cout << RED
+			  << "Input is discarded\n"
+			  << END
+			  << std::endl;
 }

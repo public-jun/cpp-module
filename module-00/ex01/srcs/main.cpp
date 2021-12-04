@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:21 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:39:08 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:54:12 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main()
 		else
 			phonebook.invalidInput();
 	}
-	std::cout << "\nCLOSED BOOK" << std::endl;
+	std::cout << "\nCLOSED BOOK, bye" << std::endl;
 	return (0);
 }

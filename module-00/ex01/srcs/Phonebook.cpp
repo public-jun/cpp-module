@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:21:06 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:40:26 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ Phonebook::Phonebook()
 
 Phonebook::~Phonebook()
 {
+}
+
+void	Phonebook::showCommandHeader()
+{
+	std::cout << "Enter ADD, SEARCH or EXIT command" << std::endl;
 }
 
 void	Phonebook::addContact()
@@ -73,5 +78,5 @@ int	Phonebook::exitPhonebook()
 
 void	Phonebook::invalidInput()
 {
-	std::cout << "input is discarded" << std::endl;
+	std::cout << "Input is discarded" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:31 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:17:38 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:31:02 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ class Phonebook
 		Phonebook();
 		~Phonebook();
 
-		void	addContact();
-		void	setNowIndex();
-		void	searchPhonebook();
-		void	showHeader();
-		int		exitPhonebook();
-		void	invalidInput();
+		static void	showCommandHeader();
+		void		addContact();
+		void		setNowIndex();
+		void		searchPhonebook();
+		void		showHeader();
+		int			exitPhonebook();
+		void		invalidInput();
 };
 
 #endif

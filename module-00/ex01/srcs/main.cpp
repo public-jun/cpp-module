@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:21 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:20:43 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:39:08 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main()
 	{
 		std::string input;
 
+		Phonebook::showCommandHeader();
 		std::cout << "COMMAND> ";
 		if (!std::getline(std::cin, input))
 			break;

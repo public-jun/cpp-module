@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:31 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/09 17:54:18 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:17:38 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@
 class Phonebook
 {
 	private:
-		Contact	contact[MAX_NUM];
-		int		now_index;
-		bool	is_full;
+		Contact	contact_[MAX_NUM];
+		int		now_index_;
+		bool	is_full_;
 
 	public:
 		Phonebook();
 		~Phonebook();
 
-		void	add_contact();
-		void	set_now_index();
-		void	search_phonebook();
-		void	show_header();
-		int		exit_phonebook();
-		void	invalid_input();
+		void	addContact();
+		void	setNowIndex();
+		void	searchPhonebook();
+		void	showHeader();
+		int		exitPhonebook();
+		void	invalidInput();
 };
 
 #endif

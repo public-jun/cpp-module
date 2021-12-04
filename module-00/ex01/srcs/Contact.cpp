@@ -6,13 +6,13 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:16 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/09 19:04:27 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:16:01 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <Contact.hpp>
 
-std::string Contact::field_name[5] = {
+std::string Contact::field_name_[5] = {
 	"first name",
 	"last name",
 	"nickname",
@@ -23,7 +23,7 @@ std::string Contact::field_name[5] = {
 Contact::Contact()
 {
 	for(int i = FirstName; i <= Secret; i++)
-		this->item[i] = std::string();
+		this->item_[i] = std::string();
 }
 
 Contact::~Contact()
@@ -43,12 +43,12 @@ static bool	is_valid_phone_num(std::string phone_num)
 	return (true);
 }
 
-void	Contact::set_item(int index)
+void	Contact::setItem(int index)
 {
-	this->index = index;
+	this->index_ = index;
 	for(int i = FirstName; i <= Secret; i++)
 	{
-		std::cout << this->field_name[i] << ">> ";
+		std::cout << this->field_name_[i] << ">> ";
 		std::string input;
 		if (!std::getline(std::cin, input))
 		{
@@ -68,15 +68,15 @@ void	Contact::set_item(int index)
 				i -= 1;
 			}
 			else
-				this->item[i] = input;
+				this->item_[i] = input;
 		}
 		else
-			this->item[i] = input;
+			this->item_[i] = input;
 	}
 	std::cout << "A CONTACT ADDED!!"<<std::endl;
 }
 
-void	Contact::show_omit_item(std::string src)
+void	Contact::showOmitItem(std::string src)
 {
 	std::cout << '|';
 	if (src.length() > 10)
@@ -86,13 +86,13 @@ void	Contact::show_omit_item(std::string src)
 
 }
 
-void	Contact::show_items()
+void	Contact::showItems()
 {
 	std::cout << '|';
-	std::cout << std::setw(10) << this->index;
-	show_omit_item(this->item[FirstName]);
-	show_omit_item(this->item[LastName]);
-	show_omit_item(this->item[NickName]);
+	std::cout << std::setw(10) << this->index_;
+	showOmitItem(this->item_[FirstName]);
+	showOmitItem(this->item_[LastName]);
+	showOmitItem(this->item_[NickName]);
 	std::cout << '|';
 	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:00:02 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/09 18:31:46 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:06:53 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@
 
 class Contact
 {
+	public:
+		Contact();
+		~Contact();
+		void	setItem(int index);
+		void	showItems();
+		void	showOmitItem(std::string src);
+
 	private:
-		static std::string	field_name[5];
-		std::string			item[5];
-		int					index;
+		static std::string	field_name_[5];
+		std::string			item_[5];
+		int					index_;
 
 		enum Field
 		{
@@ -32,13 +39,6 @@ class Contact
 			PhoneNum,
 			Secret
 		};
-
-	public:
-		Contact();
-		~Contact();
-		void	set_item(int index);
-		void	show_items();
-		void	show_omit_item(std::string src);
 };
 
 #endif

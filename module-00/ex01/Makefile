@@ -2,11 +2,15 @@ NAME     := phonebook
 CXX      := clang++
 CXXFLAGS := -Wall -Werror -Wextra -std=c++98 -pedantic
 
-INCLUDE := -I./
+INCLUDE  := -I./includes
 
-srcs     := main.cpp Phonebook.cpp Contact.cpp
-objs     := $(srcs:.cpp=.o)
--include $(depends)
+SRCDIR   := ./srcs/
+SRCNAME  := main.cpp \
+			Phonebook.cpp \
+			Contact.cpp
+
+srcs     := $(addprefix $(SRCDIR), $(SRCNAME))
+objs     := $(srcs:%.cpp=%.o)
 depends  := $(srcs:%.cpp=%.d)
 
 .PHONY: all
@@ -18,6 +22,7 @@ $(NAME): $(objs)
 .cpp.o:
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c -MMD -MP -MF $(<:.cpp=.d) -o $@ $<
 
+-include $(depends)
 .PHONY: clean
 clean:
 	$(RM) -rf *.dSYM

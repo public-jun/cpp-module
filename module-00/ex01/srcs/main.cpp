@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:21 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/09 19:00:26 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:20:43 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	main()
 		if (!std::getline(std::cin, input))
 			break;
 		else if (input == "EXIT")
-			return (phonebook.exit_phonebook());
+			return (phonebook.exitPhonebook());
 		else if (input == "ADD")
-			phonebook.add_contact();
+			phonebook.addContact();
 		else if (input == "SEARCH")
-			phonebook.search_phonebook();
+			phonebook.searchPhonebook();
 		else
-			phonebook.invalid_input();
+			phonebook.invalidInput();
 	}
 	std::cout << "\nCLOSED BOOK" << std::endl;
 	return (0);

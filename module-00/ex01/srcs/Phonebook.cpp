@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:28 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/11/09 19:01:51 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 12:21:06 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 
 Phonebook::Phonebook()
 {
-	this->now_index = 0;
-	this->is_full = false;
+	now_index_ = 0;
+	is_full_ = false;
 }
 
 Phonebook::~Phonebook()
 {
 }
 
-void	Phonebook::add_contact()
+void	Phonebook::addContact()
 {
-	contact[now_index].set_item(this->now_index);
-	this->set_now_index();
+	contact_[now_index_].setItem(now_index_);
+	setNowIndex();
 }
 
-void	Phonebook::set_now_index()
+void	Phonebook::setNowIndex()
 {
-	now_index += 1;
-	if (now_index == MAX_NUM)
+	now_index_ += 1;
+	if (now_index_ == MAX_NUM)
 	{
-		is_full = true;
-		now_index = 0;
+		is_full_ = true;
+		now_index_ = 0;
 	}
 }
 
-void	Phonebook::show_header()
+void	Phonebook::showHeader()
 {
 	std::cout << '|';
 	std::cout << std::setw(10) << "index";
@@ -52,26 +52,26 @@ void	Phonebook::show_header()
 	std::cout << std::endl;
 }
 
-void	Phonebook::search_phonebook()
+void	Phonebook::searchPhonebook()
 {
-	this->show_header();
+	showHeader();
 
 	int last_index;
-	if (is_full)
+	if (is_full_)
 		last_index = MAX_NUM - 1;
 	else
-		last_index = this->now_index - 1;
+		last_index = now_index_ - 1;
 	for(int i = 0; i <= last_index; i++)
-		this->contact[i].show_items();
+		contact_[i].showItems();
 }
 
-int	Phonebook::exit_phonebook()
+int	Phonebook::exitPhonebook()
 {
 	std::cout << "\nCLOSED BOOK" << std::endl;
 	return (0);
 }
 
-void	Phonebook::invalid_input()
+void	Phonebook::invalidInput()
 {
 	std::cout << "input is discarded" << std::endl;
 }

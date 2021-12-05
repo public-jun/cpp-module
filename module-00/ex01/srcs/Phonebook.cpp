@@ -44,7 +44,7 @@ void	Phonebook::addContact()
 void	Phonebook::setNowIndex()
 {
 	now_index_ += 1;
-	if (now_index_ == MAX_NUM)
+	if (now_index_ == max_num_)
 	{
 		is_full_ = true;
 		now_index_ = 0;
@@ -65,17 +65,54 @@ void	Phonebook::showHeader()
 	std::cout << std::endl;
 }
 
+static bool	isValidIndex(std::string input, int last_index)
+{
+	if (strchr("012345678", input[0]))
+	{
+		int index = input[0] - '0';
+		if (index <= last_index)
+			return (true);
+	}
+	return (false);
+}
+
+void	Phonebook::showIndexItem(int last_index)
+{
+	std::cout << "\nEnter INDEX to display the constent" << std::endl;
+
+	while (true)
+	{
+		std::string input;
+		if (!std::getline(std::cin, input))
+		{
+			std::cout << "\nCLOSED BOOK, bye" << std::endl;
+			std::exit(1);
+		}
+		// 長さ1で0から8までの数字
+		if (input.length() == 1 && isValidIndex(input, last_index))
+		{
+			int i = input[0] - '0';
+			contact_[i].showAll();
+			return;
+		}
+		else
+		{
+			std::cout << RED << "\nEnter valid index"  << END << std::endl;
+		}
+	}
+}
+
 void	Phonebook::searchPhonebook()
 {
 	showHeader();
-
 	int last_index;
 	if (is_full_)
-		last_index = MAX_NUM - 1;
+		last_index = max_num_ - 1;
 	else
 		last_index = now_index_ - 1;
 	for(int i = 0; i <= last_index; i++)
 		contact_[i].showItems();
+	this->showIndexItem(last_index);
 }
 
 int	Phonebook::exitPhonebook()

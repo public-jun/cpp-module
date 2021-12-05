@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 00:00:02 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 12:06:53 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/04 16:09:30 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ class Contact
 		Contact();
 		~Contact();
 		void	setItem(int index);
-		void	showItems();
 		void	showOmitItem(std::string src);
+		void	showItems();
+		void	showAll();
 
 	private:
 		static std::string	field_name_[5];

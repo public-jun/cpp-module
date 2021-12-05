@@ -6,7 +6,7 @@
 /*   By: jnakahod <jnakahod@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 13:49:16 by jnakahod          #+#    #+#             */
-/*   Updated: 2021/12/04 13:11:39 by jnakahod         ###   ########.fr       */
+/*   Updated: 2021/12/05 16:03:55 by jnakahod         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Contact::setItem(int index)
 		if (!std::getline(std::cin, input))
 		{
 			std::cout << "\nCLOSED BOOK, bye" << std::endl;
-			exit(0);
+			std::exit(1);
 		}
 		else if (!input.length())
 		{
@@ -61,7 +61,6 @@ void	Contact::showOmitItem(std::string src)
 		std::cout << src.substr(0, 9) << ".";
 	else
 		std::cout << std::setw(10) << src;
-
 }
 
 void	Contact::showItems()
@@ -71,6 +70,16 @@ void	Contact::showItems()
 	showOmitItem(this->item_[FirstName]);
 	showOmitItem(this->item_[LastName]);
 	showOmitItem(this->item_[NickName]);
-	std::cout << '|';
+	std::cout << "|" << std::endl;
+}
+
+void	Contact::showAll()
+{
+	for (unsigned int i = 0; i <= Secret ;++i)
+	{
+		std::cout << field_name_[i]
+				  << " >>"
+				  << item_[i] << std::endl;
+	}
 	std::cout << std::endl;
 }

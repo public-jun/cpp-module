@@ -22,8 +22,8 @@ class Form
 		//Getter all atributes
 		const std::string GetName() const;
 		bool GetIsSigned() const;
-		const int GetGradeToSign() const;
-		const int GetGradeToExecute() const;
+		int GetGradeToSign() const;
+		int GetGradeToExecute() const;
 
 		void beSigned(const Bureaucrat &bureaucrat);
 

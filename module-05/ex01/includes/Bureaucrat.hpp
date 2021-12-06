@@ -6,9 +6,6 @@
 #include <iostream>
 #include <exception>
 
-#define LOWEST_GRADE 150
-#define HIGHEST_GRADE 1
-
 class Form;
 
 class Bureaucrat
@@ -54,8 +51,10 @@ class Bureaucrat
 		};
 
 		private :
-			const std::string name_;
 			// 1(high) <= range <= 150(low)
+			static const int lowest_grade_ = 150;
+			static const int highest_grade_ = 1;
+			const std::string name_;
 			int grade_;
 };
 

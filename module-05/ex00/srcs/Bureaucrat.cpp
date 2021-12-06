@@ -3,12 +3,12 @@
 #include <color.hpp>
 
 Bureaucrat::Bureaucrat() :
-	name_("no_name"), grade_(LOWEST_GRADE)
+	name_("no_name"), grade_(lowest_grade_)
 {
 }
 
 Bureaucrat::Bureaucrat(std::string name) :
-	name_(name), grade_(LOWEST_GRADE)
+	name_(name), grade_(lowest_grade_)
 {
 }
 
@@ -70,18 +70,18 @@ int Bureaucrat::GetGrade() const
 
 bool Bureaucrat::IsGradeToohigh(int grade)
 {
-	return (grade < HIGHEST_GRADE);
+	return (grade < highest_grade_);
 }
 
 bool Bureaucrat::IsGradeTooLow(int grade)
 {
-	return (grade > LOWEST_GRADE);
+	return (grade > lowest_grade_);
 }
 
 // Increment Decrement
 void Bureaucrat::IncrementGrade()
 {
-	if (grade_ == HIGHEST_GRADE)
+	if (grade_ == highest_grade_)
 	{
 		throw (GradeTooHighException("Exception in increment. Grade is too HIGH!!"));
 	}
@@ -90,7 +90,7 @@ void Bureaucrat::IncrementGrade()
 
 void Bureaucrat::DecrementGrade()
 {
-	if (grade_ == LOWEST_GRADE)
+	if (grade_ == lowest_grade_)
 	{
 		throw (GradeTooLowException("Exception in decrement. Grade is too LOW!!"));
 	}

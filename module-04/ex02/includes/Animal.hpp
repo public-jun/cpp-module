@@ -7,8 +7,6 @@ class Animal
 {
 	public:
 		Animal();
-		Animal(const Animal &other);
-		Animal &operator=(const Animal &other);
 		virtual ~Animal();
 
 		const std::string &getType() const;
@@ -17,6 +15,10 @@ class Animal
 
 	protected:
 		std::string type_;
+
+	private:
+		Animal(const Animal &other);
+		Animal &operator=(const Animal &other);
 };
 
 #endif

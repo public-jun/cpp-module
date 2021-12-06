@@ -4,7 +4,7 @@
 
 Brain::Brain()
 {
-	std::cout << BACK_GRAY
+	std::cout << YELLOW
 			  << "Brain default constructor called"
 			  << END
 			  << std::endl;
@@ -13,7 +13,7 @@ Brain::Brain()
 Brain::Brain(const Brain &other)
 {
 	*this = other;
-	std::cout << BACK_GRAY
+	std::cout << YELLOW
 			  << "Brain copy constructor called"
 			  << END
 			  << std::endl;
@@ -33,7 +33,7 @@ Brain &Brain::operator=(const Brain &other)
 
 Brain::~Brain()
 {
-	std::cout << BACK_GRAY
+	std::cout << YELLOW
 			  << "Brain destructor called"
 			  << END
 			  << std::endl;

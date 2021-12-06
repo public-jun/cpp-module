@@ -12,6 +12,13 @@ int main(void)
 
 	// Animal animal;
 	// animal.makeSound();
+
+	// Animal *a = new Cat();
+	// Animal *b = new Dog();
+	// *a = *b;
+	// delete a;
+	// delete b;
+
 	Cat cat;
 	cat.makeSound();
 	Dog dog;

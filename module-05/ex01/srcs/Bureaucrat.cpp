@@ -106,7 +106,9 @@ void Bureaucrat::signForm(Form &form) const
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << name_ << " cannot sign " << form.GetName() << " because " << e.what() << '\n';
+		std::cerr << RED
+				  << name_ << " cannot sign " << form.GetName() << " because " << e.what()
+				  << END << '\n';
 	}
 }
 

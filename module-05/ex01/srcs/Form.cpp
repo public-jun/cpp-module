@@ -35,7 +35,7 @@ Form::Form(const Form &other) :
 }
 
 
-Form &operator=(const Form &other)
+Form &Form::operator=(const Form &other)
 {
 	if (this != &other)
 	{
@@ -55,15 +55,15 @@ const std::string Form::GetName() const
 
 bool Form::GetIsSigned() const
 {
-	return (is_signed_)
+	return (is_signed_);
 }
 
-const int Form::GetGradeToSign() const
+int Form::GetGradeToSign() const
 {
 	return (grade_to_sign_);
 }
 
-const int Form::GetGradeToExecute() const
+int Form::GetGradeToExecute() const
 {
 	return (grade_to_execute_);
 }
@@ -111,8 +111,9 @@ std::ostream &operator<<(std::ostream &os, const Form &a)
 	os << BOLD
 	   << "------Form info------\n"
 	   << "name is " << a.GetName() << "\n"
-	   << "Form is " << a.GetIsSigned() ? "signed" : "not signed" << "\n"
+	   << "Form is " << (a.GetIsSigned() ? "signed" : "not signed") << "\n"
 	   << "Grade to sign :" << std::to_string(a.GetGradeToSign()) << "\n"
 	   << "Grade to execute :" << std::to_string(a.GetGradeToExecute()) << "\n"
-	   << END
+	   << END;
+	return (os);
 }

@@ -97,11 +97,11 @@ void Bureaucrat::DecrementGrade()
 	grade_ += 1;
 }
 
-void Bureaucrat::signForm(const Form &form) const
+void Bureaucrat::signForm(Form &form) const
 {
 	try
 	{
-		form.beSigned(this);
+		form.beSigned(*this);
 		std::cout << name_ << " signs " << form.GetName() << std::endl;
 	}
 	catch(const std::exception& e)

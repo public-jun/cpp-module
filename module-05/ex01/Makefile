@@ -4,6 +4,7 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 
 INCLUDE := -I./includes
 srcs := ./srcs/main.cpp \
+		./srcs/Form.cpp \
 		./srcs/Bureaucrat.cpp
 
 objs := $(srcs:.cpp=.o)

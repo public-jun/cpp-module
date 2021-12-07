@@ -5,9 +5,6 @@
 #include <iostream>
 #include <string>
 
-#define LOWEST_GRADE 150
-#define HIGHEST_GRADE 1
-
 class Bureaucrat;
 
 class Form
@@ -48,6 +45,8 @@ class Form
 		};
 
 	private:
+		static const int lowest_grade_ = 150;
+		static const int highest_grade_ = 1;
 		const std::string name_;
 		bool is_signed_;
 		//grades has constrains and throw exception

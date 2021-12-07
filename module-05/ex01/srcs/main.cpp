@@ -16,16 +16,16 @@ void	printBureaucratInfo(const Bureaucrat &b)
 			  << END << std::endl;
 }
 
-void	printFormInfo(const std::string &name, int grade_to_sign, int grade_to_exe)
+void	printFormInfo(const std::string &name, int grade_to_sign)
 {
-	std::cout << "[ Form(name, grade_to_sign, grade_to_exe) = " << std::flush;
+	std::cout << "[ Form(name, grade_to_sign) = " << std::flush;
 	std::cout << CYAN
-			  << "(" << name << ", " << grade_to_sign << ", " << grade_to_exe << ") ]" << END << std::endl;
+			  << "(" << name << ", " << grade_to_sign << ") ]" << END << std::endl;
 }
 
 void testConstructor(const std::string &name, int grade_to_sign, int grade_to_exe)
 {
-	printFormInfo(name, grade_to_sign, grade_to_exe);
+	printFormInfo(name, grade_to_sign);
 	try
 	{
 		Form a(name, grade_to_sign, grade_to_exe);
@@ -42,9 +42,10 @@ void	testSignForm(std::string f_name, int grade_to_sign, int grade_to_exe)
 	Bureaucrat bob("bob", 10);
 	printBureaucratInfo(bob);
 
-	printFormInfo(f_name, grade_to_sign, grade_to_exe);
+	printFormInfo(f_name, grade_to_sign);
 	Form form(f_name, grade_to_sign, grade_to_exe);
 	bob.signForm(form);
+	std::cout << std::endl;
 }
 
 int main(void)

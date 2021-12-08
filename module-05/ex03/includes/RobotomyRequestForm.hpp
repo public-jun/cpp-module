@@ -17,6 +17,8 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 		virtual ~RobotomyRequestForm();
 
+		static Form *create(const std::string &target);
+
 	private:
 		RobotomyRequestForm();
 

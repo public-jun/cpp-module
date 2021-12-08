@@ -23,6 +23,7 @@ class Form
 
 		void beSigned(const Bureaucrat &bureaucrat);
 		void execute(const Bureaucrat &executor) const;
+		// virtual Form *create(const std::string &target) = 0;
 
 		class GradeTooHighException : public std::exception
 		{

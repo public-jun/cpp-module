@@ -29,3 +29,8 @@ void PresidentialPardonForm::action() const
 {
 	std::cout << GetTarget() << " has been pardoned by Zafod Beeblebrox" << std::endl;
 }
+
+Form *PresidentialPardonForm::create(const std::string &target)
+{
+	return (new PresidentialPardonForm(target));
+}

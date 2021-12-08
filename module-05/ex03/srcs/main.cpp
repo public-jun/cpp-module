@@ -3,13 +3,14 @@
 #include <PresidentialPardonForm.hpp>
 #include <RobotomyRequestForm.hpp>
 #include <Form.hpp>
+#include <Intern.hpp>
 #include <color.hpp>
 #include <iostream>
 
-void printTestTitle(std::string title)
-{
-	std::cout << "\n" << BACK_GREEN << title << END << "\n" << std::endl;
-}
+// void printTestTitle(std::string title)
+// {
+// 	std::cout << "\n" << BACK_GREEN << title << END << "\n" << std::endl;
+// }
 
 void	printBureaucratInfo(const Bureaucrat &b)
 {
@@ -36,49 +37,58 @@ void testForm(Bureaucrat &b, Form &f)
 int main(void)
 {
 	{
-		printTestTitle("----------SHRUBBERY TEST---------");
+		Intern someRandomIntern;
+		Form *rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+
 		Bureaucrat b_top("top", 1);
-		ShrubberyCreationForm s_form("hoge");
-		testForm(b_top, s_form);
-
-		Bureaucrat b_middle("mid", 140);
-		ShrubberyCreationForm var_form("var");
-		testForm(b_middle, var_form);
-
-		Bureaucrat b_last("last", 150);
-		ShrubberyCreationForm tokyo_form("tokyo");
-		testForm(b_last, tokyo_form);
+		testForm(b_top, *rrf);
+		delete rrf;
 	}
+	// {
+	// 	printTestTitle("----------SHRUBBERY TEST---------");
+	// 	Bureaucrat b_top("top", 1);
+	// 	ShrubberyCreationForm s_form("hoge");
+	// 	testForm(b_top, s_form);
 
-	{
-		printTestTitle("----------PRESIDENTIAL TEST---------");
-		Bureaucrat b_top("top", 1);
-		PresidentialPardonForm hoge_form("hoge");
-		testForm(b_top, hoge_form);
+	// 	Bureaucrat b_middle("mid", 140);
+	// 	ShrubberyCreationForm var_form("var");
+	// 	testForm(b_middle, var_form);
 
-		Bureaucrat b_middle("mid", 140);
-		PresidentialPardonForm var_form("var");
-		testForm(b_middle, var_form);
+	// 	Bureaucrat b_last("last", 150);
+	// 	ShrubberyCreationForm tokyo_form("tokyo");
+	// 	testForm(b_last, tokyo_form);
+	// }
 
-		Bureaucrat b_last("last", 150);
-		PresidentialPardonForm tokyo_form("tokyo");
-		testForm(b_last, tokyo_form);
-	}
+	// {
+	// 	printTestTitle("----------PRESIDENTIAL TEST---------");
+	// 	Bureaucrat b_top("top", 1);
+	// 	PresidentialPardonForm hoge_form("hoge");
+	// 	testForm(b_top, hoge_form);
 
-	{
-		printTestTitle("----------ROBOTOMY TEST---------");
-		Bureaucrat b_top("top", 1);
-		RobotomyRequestForm hoge_form("hoge");
-		testForm(b_top, hoge_form);
+	// 	Bureaucrat b_middle("mid", 140);
+	// 	PresidentialPardonForm var_form("var");
+	// 	testForm(b_middle, var_form);
 
-		Bureaucrat b_middle("mid", 140);
-		RobotomyRequestForm var_form("var");
-		testForm(b_middle, var_form);
+	// 	Bureaucrat b_last("last", 150);
+	// 	PresidentialPardonForm tokyo_form("tokyo");
+	// 	testForm(b_last, tokyo_form);
+	// }
 
-		Bureaucrat b_last("last", 150);
-		RobotomyRequestForm tokyo_form("tokyo");
-		testForm(b_last, tokyo_form);
-	}
+	// {
+	// 	printTestTitle("----------ROBOTOMY TEST---------");
+	// 	Bureaucrat b_top("top", 1);
+	// 	RobotomyRequestForm hoge_form("hoge");
+	// 	testForm(b_top, hoge_form);
+
+	// 	Bureaucrat b_middle("mid", 140);
+	// 	RobotomyRequestForm var_form("var");
+	// 	testForm(b_middle, var_form);
+
+	// 	Bureaucrat b_last("last", 150);
+	// 	RobotomyRequestForm tokyo_form("tokyo");
+	// 	testForm(b_last, tokyo_form);
+	// }
 
 	return (0);
 }

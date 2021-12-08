@@ -53,3 +53,8 @@ void ShrubberyCreationForm::action() const
 		throw(std::ofstream::failure("Failed to write tree"));
 	}
 }
+
+Form *ShrubberyCreationForm::create(const std::string &target)
+{
+	return (new ShrubberyCreationForm(target));
+}

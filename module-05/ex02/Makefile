@@ -7,6 +7,7 @@ srcs := ./srcs/main.cpp \
 		./srcs/Form.cpp \
 		./srcs/ShrubberyCreationForm.cpp \
 		./srcs/PresidentialPardonForm.cpp \
+		./srcs/RobotomyRequestForm.cpp \
 		./srcs/Bureaucrat.cpp
 
 objs := $(srcs:.cpp=.o)

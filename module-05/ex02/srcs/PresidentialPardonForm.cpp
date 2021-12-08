@@ -1,5 +1,4 @@
 #include <PresidentialPardonForm.hpp>
-#include <color.hpp>
 
 const std::string PresidentialPardonForm::presidential_name_ = "PresidentialPardon";
 

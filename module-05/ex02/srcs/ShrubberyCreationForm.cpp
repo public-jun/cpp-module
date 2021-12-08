@@ -8,7 +8,7 @@ ShrubberyCreationForm::ShrubberyCreationForm()
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) :
-	Form(shrubbery_name_, target,require_sign_to_grade_, require_exe_to_grade_)
+	Form(shrubbery_name_, target, require_sign_to_grade_, require_exe_to_grade_)
 {
 }
 

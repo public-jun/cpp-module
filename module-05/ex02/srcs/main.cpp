@@ -1,5 +1,6 @@
 #include <Bureaucrat.hpp>
 #include <ShrubberyCreationForm.hpp>
+#include <PresidentialPardonForm.hpp>
 #include <Form.hpp>
 #include <color.hpp>
 #include <iostream>
@@ -17,55 +18,50 @@ void	printBureaucratInfo(const Bureaucrat &b)
 			  << END << std::endl;
 }
 
-// void	printFormInfo(const std::string &name, int grade_to_sign)
-// {
-// 	std::cout << "[ Form(name, grade_to_sign) = " << std::flush;
-// 	std::cout << CYAN
-// 			  << "(" << name << ", " << grade_to_sign << ") ]" << END << std::endl;
-// }
+void testForm(Bureaucrat &b, Form &f)
+{
+	printBureaucratInfo(b);
 
-// void testConstructor(const std::string &name, int grade_to_sign, int grade_to_exe)
-// {
-// 	printFormInfo(name, grade_to_sign);
-// 	try
-// 	{
-// 		Form a(name, grade_to_sign, grade_to_exe);
-// 		std::cout << BOLD << a << END << "\n" << std::endl;
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << RED << e.what() << END << '\n' << std::endl;
-// 	}
-// }
+	std::cout << BOLD << f << END << std::endl;
+	b.signForm(f);
+	std::cout << GREEN
+			  << (f.GetIsSigned() ? "is signed" : "is not signed ")
+			  << END << std::endl;
+	b.executeForm(f);
+	std::cout << std::endl;
+}
 
-// void	testSignForm(std::string f_name, int grade_to_sign, int grade_to_exe)
-// {
-// 	Bureaucrat bob("bob", 10);
-// 	printBureaucratInfo(bob);
-
-// 	printFormInfo(f_name, grade_to_sign);
-// 	Form form(f_name, grade_to_sign, grade_to_exe);
-// 	bob.signForm(form);
-// 	std::cout << std::endl;
-// }
 
 int main(void)
 {
 	{
 		printTestTitle("----------SHRUBBERY TEST---------");
-		ShrubberyCreationForm shrubbery("hoge");
-		Bureaucrat b_top("one", 1);
-		printBureaucratInfo(b_top);
-
+		Bureaucrat b_top("top", 1);
 		ShrubberyCreationForm s_form("hoge");
-		b_top.signForm(s_form);
-		b_top.executeForm(s_form);
-		std::cout << std::endl;
+		testForm(b_top, s_form);
 
-		// Bureaucrat b_middle("mid", 140);
-		// printBureaucratInfo(b_middle);
-		// Bureaucrat b_last("last", 150);
-		// printBureaucratInfo(b_last);
+		Bureaucrat b_middle("mid", 140);
+		ShrubberyCreationForm var_form("var");
+		testForm(b_middle, var_form);
+
+		Bureaucrat b_last("last", 150);
+		ShrubberyCreationForm tokyo_form("tokyo");
+		testForm(b_last, tokyo_form);
+	}
+
+	{
+		printTestTitle("----------PRESIDENTIAL TEST---------");
+		Bureaucrat b_top("top", 1);
+		PresidentialPardonForm hoge_form("hoge");
+		testForm(b_top, hoge_form);
+
+		Bureaucrat b_middle("mid", 140);
+		PresidentialPardonForm var_form("var");
+		testForm(b_middle, var_form);
+
+		Bureaucrat b_last("last", 150);
+		PresidentialPardonForm tokyo_form("tokyo");
+		testForm(b_last, tokyo_form);
 	}
 
 	{

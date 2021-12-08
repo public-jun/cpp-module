@@ -5,7 +5,7 @@ Form::Form() :
 	name_("no_name"),
 	is_signed_(false),
 	grade_to_sign_(lowest_grade_),
-	grade_to_execute_(highest_grade_)
+	grade_to_execute_(lowest_grade_)
 {
 }
 

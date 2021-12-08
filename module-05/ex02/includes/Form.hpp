@@ -11,18 +11,18 @@ class Form
 {
 	public:
 		Form();
-		Form(std::string name, int grade_to_sign, int grade_to_execute);
-		Form(const Form &other);
-		Form &operator=(const Form &other);
-		~Form();
+		Form(std::string name, std::string target, int grade_to_sign, int grade_to_execute);
+		virtual ~Form();
 
 		//Getter all atributes
 		const std::string GetName() const;
+		const std::string GetTarget() const;
 		bool GetIsSigned() const;
 		int GetGradeToSign() const;
 		int GetGradeToExecute() const;
 
 		void beSigned(const Bureaucrat &bureaucrat);
+		void execute(const Bureaucrat &executor) const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -44,14 +44,26 @@ class Form
 				const char *msg_;
 		};
 
+		class NotSignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
 	private:
+		Form(const Form &other);
+		Form &operator=(const Form &other);
+
 		static const int lowest_grade_ = 150;
 		static const int highest_grade_ = 1;
+
 		const std::string name_;
+		const std::string target_;
 		bool is_signed_;
-		//grades has constrains and throw exception
 		const int grade_to_sign_;
 		const int grade_to_execute_;
+
+		virtual void action() const = 0;
 };
 
 // << oeprator overload

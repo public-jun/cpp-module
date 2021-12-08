@@ -5,6 +5,7 @@ CXXFLAGS := -Wall -Wextra -Werror -std=c++98 -pedantic
 INCLUDE := -I./includes
 srcs := ./srcs/main.cpp \
 		./srcs/Form.cpp \
+		./srcs/ShrubberyCreationForm.cpp \
 		./srcs/Bureaucrat.cpp
 
 objs := $(srcs:.cpp=.o)
@@ -22,7 +23,7 @@ $(NAME): $(objs)
 -include $(depends)
 .PHONY: clean
 clean:
-	$(RM) -rf *.dSYM
+	$(RM) -rf *.dSYM *_shrubbery
 	$(RM) -rf $(objs) $(depends)
 
 .PHONY: fclean

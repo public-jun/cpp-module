@@ -34,6 +34,7 @@ void RobotomyRequestForm::action() const
 	if (rand() % 2)
 	{
 		std::cout << GREEN
+				  << "Bzzzzzz!!, "
 				  << GetTarget()
 				  << " has been robotomized success"
 				  << END << std::endl;

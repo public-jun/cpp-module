@@ -47,3 +47,8 @@ void RobotomyRequestForm::action() const
 	}
 
 }
+
+Form *RobotomyRequestForm::create(const std::string &target)
+{
+	return (new RobotomyRequestForm(target));
+}

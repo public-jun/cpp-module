@@ -15,6 +15,7 @@ class ShrubberyCreationForm : public Form
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 		virtual ~ShrubberyCreationForm();
 
+		static Form *create(const std::string &target);
 
 	private:
 		ShrubberyCreationForm();

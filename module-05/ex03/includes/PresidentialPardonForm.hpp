@@ -15,6 +15,8 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 		virtual ~PresidentialPardonForm();
 
+		static Form *create(const std::string &target);
+
 	private:
 		PresidentialPardonForm();
 

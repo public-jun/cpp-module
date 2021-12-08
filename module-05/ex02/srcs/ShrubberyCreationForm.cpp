@@ -1,5 +1,4 @@
 #include <ShrubberyCreationForm.hpp>
-#include <color.hpp>
 
 const std::string ShrubberyCreationForm::shrubbery_name_ = "ShrubberyCreation";
 

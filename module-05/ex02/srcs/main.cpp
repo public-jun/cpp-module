@@ -1,6 +1,7 @@
 #include <Bureaucrat.hpp>
 #include <ShrubberyCreationForm.hpp>
 #include <PresidentialPardonForm.hpp>
+#include <RobotomyRequestForm.hpp>
 #include <Form.hpp>
 #include <color.hpp>
 #include <iostream>
@@ -65,10 +66,18 @@ int main(void)
 	}
 
 	{
-		printTestTitle("----------SIGNFORM TEST---------");
+		printTestTitle("----------ROBOTOMY TEST---------");
+		Bureaucrat b_top("top", 1);
+		RobotomyRequestForm hoge_form("hoge");
+		testForm(b_top, hoge_form);
 
-		// testSignForm("entry", 1, 42);
-		// testSignForm("entry", 150, 42);
+		Bureaucrat b_middle("mid", 140);
+		RobotomyRequestForm var_form("var");
+		testForm(b_middle, var_form);
+
+		Bureaucrat b_last("last", 150);
+		RobotomyRequestForm tokyo_form("tokyo");
+		testForm(b_last, tokyo_form);
 	}
 
 	return (0);

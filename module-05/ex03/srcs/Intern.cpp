@@ -9,7 +9,7 @@ const std::string Intern::form_names_[3] =
 {
 	"shrubbery creation",
 	"robotomy request",
-	"PresidentialPardonForm"
+	"presidential pardon"
 };
 
 Intern::Intern()

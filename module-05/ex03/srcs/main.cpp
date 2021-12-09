@@ -26,9 +26,6 @@ void testForm(Bureaucrat &b, Form &f)
 
 	std::cout << BOLD << f << END << std::endl;
 	b.signForm(f);
-	// std::cout << GREEN
-	// 		  << (f.GetIsSigned() ? "is signed" : "is not signed ")
-	// 		  << END << std::endl;
 	b.executeForm(f);
 	std::cout << std::endl;
 }

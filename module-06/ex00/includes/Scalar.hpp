@@ -20,7 +20,7 @@ class Scalar
 			kPinf,
 			kNan,
 			kChar,
-			kint,
+			kInt,
 			kFloat,
 			KDouble
 		} Types;
@@ -36,7 +36,6 @@ class Scalar
 		Types type_;
 
 		Types checkType();
-
 };
 
 #endif

@@ -2,50 +2,41 @@
 #define SCALAR_HPP
 
 #include <string>
+#include <iostream>
 #include <exception>
+#include <locale>
 
 class Scalar
 {
 	public:
-		Scalar(std::string literal_value);
+		explicit Scalar(const std::string &literal_value);
 		Scalar(const Scalar &other);
-		Scalar &operator=(const Scalar &other);
+		Scalar &operator=(const Scalar &);
 		~Scalar();
 
-		const std::string GetLiteralValue() const;
-		void LiteralToStore();
+		typedef enum {
+			kDef,
+			kNinf,
+			kPinf,
+			kNan,
+			kChar,
+			kint,
+			kFloat,
+			KDouble
+		} Types;
 
-		bool IsNumeric() const;
-
-
-		void ToChar() const;
-		// StrToInt();
-		// StrToFloat();
-		// StrToDouble();
-
-		class ImpossibleException : public std::exception
-		{
-			public:
-				ImpossibleException(const char *msg);
-				virtual const char *what() const throw();
-
-			private:
-				const char *msg_;
-		};
-
-		class NonDisplayableException: public std::exception
-		{
-			public:
-				NonDisplayableException(const char *msg);
-				virtual const char *what() const throw();
-
-			private:
-				const char *msg_;
-		};
+		void convert();
+		const std::string getLiteralValue() const;
 
 	private:
+		Scalar();
+
+
 		const std::string literal_value_;
-		// const double store_value_;
+		Types type_;
+
+		Types checkType();
+
 };
 
 #endif

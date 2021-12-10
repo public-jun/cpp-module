@@ -1,17 +1,14 @@
 #include <Scalar.hpp>
 #include <iostream>
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "One argment required" << std::endl;
+		std::cout << "Enter numeric value" << std::endl;
 		return (1);
 	}
 
-	Scalar scalar(av[1]);
-	scalar.ToChar();
-	//Convertする
-	// scalar.;
-	//statusをprintする
+	Scalar value(static_cast<const std::string &>(av[1]));
+	value.convert();
 }

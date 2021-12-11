@@ -1,5 +1,12 @@
 #include <Scalar.hpp>
 
+const std::string Scalar::kScienceValue[3] =
+{
+	"-inf",
+	"+inf",
+	"nan"
+};
+
 Scalar::Scalar() {}
 
 Scalar::Scalar(std::string literal_value) :
@@ -8,7 +15,8 @@ Scalar::Scalar(std::string literal_value) :
 	store_value_(0.0),
 	over_flow_c_(false),
 	over_flow_i_(false),
-	over_flow_f_(false) {}
+	over_flow_f_(false),
+	over_flow_d_(false) {}
 
 Scalar::Scalar(const Scalar &other)
 {
@@ -165,7 +173,15 @@ Scalar::Types Scalar::checkType()
 void Scalar::storeValue()
 {
 	std::istringstream iss(literal_value_);
-	iss >> store_value_;
+
+	if (type_ == kChar)
+	{
+		store_value_ = static_cast<double>(literal_value_[0]);
+	}
+	else
+	{
+		iss >> store_value_;
+	}
 }
 
 static void testCheckStoreValue(double value)
@@ -200,6 +216,121 @@ void Scalar::testCheckOverFlow()
 	std::cout << std::endl;
 }
 
+bool Scalar::isScienceValue()
+{
+	if (type_ == kNan || type_ == kNinf || type_ == kPinf)
+	{
+		return (true);
+	}
+	return (false);
+}
+
+void Scalar::printChar()
+{
+	std::cout << "char: " << std::flush;
+
+	char c_value = static_cast<char>(store_value_);
+	if (std::isprint(c_value))
+		std::cout << '\'' << c_value << '\'' << std::endl;
+	else if (over_flow_c_ || type_ == kDef || isScienceValue())
+		std::cout << "impossible" << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+}
+
+void Scalar::printInt()
+{
+	std::cout << "int: " << std::flush;
+
+	if (over_flow_i_ || type_ == kDef || isScienceValue())
+	{
+		if (type_ == kInt)
+		{
+			over_flow_f_ = true;
+			over_flow_d_ = true;
+		}
+		std::cout << "impossible" << std::endl;
+	}
+	else
+	{
+		int i_value = static_cast<int>(store_value_);
+		std::cout << i_value << std::endl;
+	}
+}
+
+void Scalar::printScienceValue()
+{
+	for(unsigned int i = 0; i <= kNan; ++i)
+	{
+		if (type_ == i)
+			std::cout << kScienceValue[i] << std::flush;
+	}
+}
+
+void Scalar::printFloat()
+{
+	std::cout << "float: " << std::flush;
+
+	if (isScienceValue())
+	{
+		printScienceValue();
+		std::cout << "f" << std::endl;
+	}
+	else if (over_flow_f_ || type_ == kDef)
+	{
+		if (type_ == kFloat)
+		{
+			over_flow_d_ = true;
+		}
+		std::cout << "impossible" << std::endl;
+	}
+	else
+	{
+		float f_value = static_cast<float>(store_value_);
+		unsigned int pos = 0;
+
+		if (std::floor(f_value) == f_value)
+			pos = 1;
+		else
+			pos = 10;
+		std::cout << std::fixed << std::setprecision(pos) << f_value << "f" << std::endl;
+	}
+}
+
+void Scalar::printDouble()
+{
+	std::cout << "double: " << std::flush;
+
+	if (isScienceValue())
+	{
+		printScienceValue();
+	}
+	else if (over_flow_d_ || type_ == kDef)
+	{
+		std::cout << "impossible" << std::endl;
+	}
+	else
+	{
+		double d_value = store_value_;
+		unsigned int pos = 0;
+
+		if (std::floor(d_value) == d_value)
+			pos = 1;
+		else
+			pos = 10;
+		std::cout << std::fixed << std::setprecision(pos) << d_value << std::endl;
+	}
+}
+
+
+void Scalar::printAll()
+{
+	printChar();
+	printInt();
+	printFloat();
+	printDouble();
+}
+
 void Scalar::convert()
 {
 	type_ = checkType();
@@ -208,4 +339,5 @@ void Scalar::convert()
 	testCheckStoreValue(store_value_);
 	checkOverFlow();
 	testCheckOverFlow();
+	printAll();
 }

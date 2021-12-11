@@ -4,7 +4,7 @@
 
 void PrintTestTitle(std::string title)
 {
-	std::cout << "\n" << BACK_GREEN << title << END << "\n" << std::endl;
+	std::cout << "\n" << BACK_GREEN  << BLACK << title << END << "\n" << std::endl;
 }
 
 void PrintTestInfo(std::string name, int grade, std::string append = "")

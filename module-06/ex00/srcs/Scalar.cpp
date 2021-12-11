@@ -2,7 +2,7 @@
 
 Scalar::Scalar() {}
 
-Scalar::Scalar(const std::string &literal_value) :
+Scalar::Scalar(std::string literal_value) :
 	literal_value_(literal_value), type_(kDef) {}
 
 Scalar::Scalar(const Scalar &other)
@@ -40,6 +40,8 @@ static void testCheckType(Scalar::Types type)
 		std::cout << "int" << std::endl;
 	else if (type == Scalar::KDouble)
 		std::cout << "double" << std::endl;
+	else if (type == Scalar::kFloat)
+		std::cout << "float" << std::endl;
 	else
 		std::cout << "default" << std::endl;
 }
@@ -103,10 +105,34 @@ static bool isDouble(const std::string &value)
 	return (false);
 }
 
+static bool isFloat(const std::string &value)
+{
+	std::string::size_type decimal_pos = value.find_first_of(".", 0);
+	std::string::size_type len = value.length();
+	std::string::size_type i = 0;
+
+	if (decimal_pos == std::string::npos || decimal_pos == 0 || decimal_pos != value.find_last_of(".", len - 1) || decimal_pos == len - 1 )
+		return (false);
+	if (value[i] == '+' || value[i] == '-')
+		++i;
+	if (value[i] == '.')
+		return (false);
+	while (isdigit(value[i]))
+		++i;
+	if (i != decimal_pos)
+		return (false);
+	++i;
+	while (isdigit(value[i]))
+		++i;
+	if (value[i] == 'f' && len == static_cast<std::string::size_type>(i + 1))
+		return (true);
+	return (false);
+}
+
 Scalar::Types Scalar::checkType()
 {
 	const std::string literal_value = getLiteralValue();
-	// std::string::size_type len = literal_value.length();
+	std::string::size_type len = literal_value.length();
 
 	if (literal_value == "-inff" || literal_value == "-inf")
 		return (kNinf);
@@ -120,11 +146,12 @@ Scalar::Types Scalar::checkType()
 		return (kInt);
 	else if (isDouble(literal_value))
 		return (KDouble);
-	// else if (isFloat(literal_value))
-	// {
-	// 	literal_value_ = literal_value.substr(0, len - 1);
-	// 	return (kFloat);
-	// }
+	else if (isFloat(literal_value))
+	{
+		literal_value_ = literal_value.substr(0, len - 1);
+		std::cout << literal_value_ << std::endl;
+		return (kFloat);
+	}
 	return (kDef);
 }
 

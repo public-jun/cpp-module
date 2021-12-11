@@ -9,7 +9,7 @@
 class Scalar
 {
 	public:
-		explicit Scalar(const std::string &literal_value);
+		explicit Scalar(std::string literal_value);
 		Scalar(const Scalar &other);
 		Scalar &operator=(const Scalar &);
 		~Scalar();
@@ -31,8 +31,7 @@ class Scalar
 	private:
 		Scalar();
 
-
-		const std::string literal_value_;
+		std::string literal_value_;
 		Types type_;
 
 		Types checkType();

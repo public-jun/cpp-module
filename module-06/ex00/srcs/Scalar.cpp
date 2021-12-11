@@ -35,32 +35,6 @@ const std::string Scalar::getLiteralValue() const
 	return (literal_value_);
 }
 
-// 型判定
-// char , int , float, double, invalid_type
-// -inff +inff nanf , -inf +inf nan
-
-static void testCheckType(Scalar::Types type)
-{
-	std::cout << "TEST TYPE" << std::endl;
-	if (type == Scalar::kNinf)
-		std::cout << "-inf" << std::endl;
-	else if (type == Scalar::kPinf)
-		std::cout << "+inf" << std::endl;
-	else if (type == Scalar::kNan)
-		std::cout << "nan" << std::endl;
-	else if (type == Scalar::kChar)
-		std::cout << "char" << std::endl;
-	else if (type == Scalar::kInt)
-		std::cout << "int" << std::endl;
-	else if (type == Scalar::KDouble)
-		std::cout << "double" << std::endl;
-	else if (type == Scalar::kFloat)
-		std::cout << "float" << std::endl;
-	else
-		std::cout << "default" << std::endl;
-	std::cout << std::endl;
-}
-
 static bool isChar(const std::string &value)
 {
 	if (value.length() == 1
@@ -164,7 +138,6 @@ Scalar::Types Scalar::checkType()
 	else if (isFloat(literal_value))
 	{
 		literal_value_ = literal_value.substr(0, len - 1);
-		std::cout << literal_value_ << std::endl;
 		return (kFloat);
 	}
 	return (kDef);
@@ -184,13 +157,6 @@ void Scalar::storeValue()
 	}
 }
 
-static void testCheckStoreValue(double value)
-{
-	std::cout << "TEST VALUE" << std::endl;
-	std::cout << value << std::endl;
-	std::cout << std::endl;
-}
-
 void Scalar::checkOverFlow()
 {
 	if (store_value_ < std::numeric_limits<char>::min()
@@ -202,18 +168,6 @@ void Scalar::checkOverFlow()
 	if (store_value_ < -std::numeric_limits<float>::max()
 		|| std::numeric_limits<float>::max() < store_value_)
 		over_flow_f_ = true;
-}
-
-void Scalar::testCheckOverFlow()
-{
-	std::cout << "TEST OVER FLOW" << std::endl;
-	if (over_flow_c_)
-		std::cout << "over flow char" << std::endl;
-	if (over_flow_i_)
-		std::cout << "over flow int" << std::endl;
-	if (over_flow_f_)
-		std::cout << "over flow float" << std::endl;
-	std::cout << std::endl;
 }
 
 bool Scalar::isScienceValue()
@@ -334,10 +288,7 @@ void Scalar::printAll()
 void Scalar::convert()
 {
 	type_ = checkType();
-	testCheckType(type_);
 	storeValue();
-	testCheckStoreValue(store_value_);
 	checkOverFlow();
-	testCheckOverFlow();
 	printAll();
 }

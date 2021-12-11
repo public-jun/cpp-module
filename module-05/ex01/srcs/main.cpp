@@ -5,7 +5,7 @@
 
 void printTestTitle(std::string title)
 {
-	std::cout << "\n" << BACK_GREEN << title << END << "\n" << std::endl;
+	std::cout << "\n" << BACK_GREEN << BLACK << title << END << "\n" << std::endl;
 }
 
 void	printBureaucratInfo(const Bureaucrat &b)

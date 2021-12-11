@@ -11,4 +11,5 @@ int	main(int ac, char **av)
 
 	Scalar value(static_cast<std::string>(av[1]));
 	value.convert();
+	return (0);
 }

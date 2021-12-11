@@ -7,7 +7,6 @@
 #include <iomanip>
 #include <limits>
 #include <cmath>
-// #include <exception>
 #include <locale>
 
 class Scalar
@@ -48,7 +47,6 @@ class Scalar
 		Types checkType();
 		void storeValue();
 		void checkOverFlow();
-		void testCheckOverFlow();
 
 		bool isScienceValue();
 		void printScienceValue();

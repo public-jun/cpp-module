@@ -88,7 +88,6 @@ void	Phonebook::showIndexItem(int last_index)
 			std::cout << "\nCLOSED BOOK, bye" << std::endl;
 			std::exit(1);
 		}
-		// 長さ1で0から8までの数字
 		if (input.length() == 1 && isValidIndex(input, last_index))
 		{
 			int i = input[0] - '0';

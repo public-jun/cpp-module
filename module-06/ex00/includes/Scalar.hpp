@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include <sstream>
+#include <iomanip>
+#include <limits>
 #include <exception>
 #include <locale>
 
@@ -33,8 +36,15 @@ class Scalar
 
 		std::string literal_value_;
 		Types type_;
+		double store_value_;
+		bool over_flow_c_;
+		bool over_flow_i_;
+		bool over_flow_f_;
 
 		Types checkType();
+		void storeValue();
+		void checkOverFlow();
+		void testCheckOverFlow();
 };
 
 #endif

@@ -3,7 +3,12 @@
 Scalar::Scalar() {}
 
 Scalar::Scalar(std::string literal_value) :
-	literal_value_(literal_value), type_(kDef) {}
+	literal_value_(literal_value),
+	type_(kDef),
+	store_value_(0.0),
+	over_flow_c_(false),
+	over_flow_i_(false),
+	over_flow_f_(false) {}
 
 Scalar::Scalar(const Scalar &other)
 {
@@ -28,6 +33,7 @@ const std::string Scalar::getLiteralValue() const
 
 static void testCheckType(Scalar::Types type)
 {
+	std::cout << "TEST TYPE" << std::endl;
 	if (type == Scalar::kNinf)
 		std::cout << "-inf" << std::endl;
 	else if (type == Scalar::kPinf)
@@ -44,6 +50,7 @@ static void testCheckType(Scalar::Types type)
 		std::cout << "float" << std::endl;
 	else
 		std::cout << "default" << std::endl;
+	std::cout << std::endl;
 }
 
 static bool isChar(const std::string &value)
@@ -155,8 +162,50 @@ Scalar::Types Scalar::checkType()
 	return (kDef);
 }
 
+void Scalar::storeValue()
+{
+	std::istringstream iss(literal_value_);
+	iss >> store_value_;
+}
+
+static void testCheckStoreValue(double value)
+{
+	std::cout << "TEST VALUE" << std::endl;
+	std::cout << value << std::endl;
+	std::cout << std::endl;
+}
+
+void Scalar::checkOverFlow()
+{
+	if (store_value_ < std::numeric_limits<char>::min()
+		|| std::numeric_limits<char>::max() < store_value_)
+		over_flow_c_ = true;
+	if (store_value_ < std::numeric_limits<int>::min()
+		|| std::numeric_limits<int>::max() < store_value_)
+		over_flow_i_ = true;
+	if (store_value_ < -std::numeric_limits<float>::max()
+		|| std::numeric_limits<float>::max() < store_value_)
+		over_flow_f_ = true;
+}
+
+void Scalar::testCheckOverFlow()
+{
+	std::cout << "TEST OVER FLOW" << std::endl;
+	if (over_flow_c_)
+		std::cout << "over flow char" << std::endl;
+	if (over_flow_i_)
+		std::cout << "over flow int" << std::endl;
+	if (over_flow_f_)
+		std::cout << "over flow float" << std::endl;
+	std::cout << std::endl;
+}
+
 void Scalar::convert()
 {
 	type_ = checkType();
 	testCheckType(type_);
+	storeValue();
+	testCheckStoreValue(store_value_);
+	checkOverFlow();
+	testCheckOverFlow();
 }

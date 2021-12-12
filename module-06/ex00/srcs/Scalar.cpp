@@ -184,10 +184,10 @@ void Scalar::printChar()
 	std::cout << "char: " << std::flush;
 
 	char c_value = static_cast<char>(store_value_);
-	if (std::isprint(c_value))
-		std::cout << '\'' << c_value << '\'' << std::endl;
-	else if (over_flow_c_ || type_ == kDef || isScienceValue())
+	if (over_flow_c_ || type_ == kDef || isScienceValue())
 		std::cout << "impossible" << std::endl;
+	else if (std::isprint(c_value))
+		std::cout << '\'' << c_value << '\'' << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
 }

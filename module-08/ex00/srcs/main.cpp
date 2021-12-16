@@ -1,35 +1,71 @@
 #include <easyfind.hpp>
-#include <iostream>
-#include <iomanip>
+#include <color.hpp>
 #include <vector>
+#include <list>
+#include <deque>
+#include <set>
 
-void testEasyFind(std::vector<int> &v, int val)
+void printTestTitle(std::string title)
 {
-	std::cout << std::setw(5) << val << ": " <<std::flush;
-	try
-	{
-		std::cout << *easyfind(v, val) << std::flush;
-		std::cout << " find" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
+	std::cout << "\n"
+			  << CYAN
+			  << title
+			  << " TEST"
+			  << END << std::endl;
 }
 
 int main(void)
 {
-	const int a[] = {1, 22, 33, 44, 55};
-
-	std::vector<int> v(a, a + 5);
-	for (std::size_t i = 0; i < v.size(); ++i)
+	const int a[] = {1, 33, 22, 55, 44};
+	for (std::size_t i = 0; i < 5; ++i)
 	{
-		std::cout << std::setw(3) << "[" << i << "]: " << v.at(i) << std::endl;
+		std::cout << std::setw(3) << "[" << i << "]: " << a[i] << std::endl;
 	}
 
+	{
+		printTestTitle("VECTOR");
+		std::vector<int> v(a, a + 5);
+		testEasyFind(v, 66);
+		testEasyFind(v, 1);
+	}
 
-	testEasyFind(v, 66);
-	testEasyFind(v, 1);
+	{
+		printTestTitle("LIST");
+		std::list<int> l(a, a + 5);
+		testEasyFind(l, 77);
+		testEasyFind(l, 44);
+	}
+
+	{
+		printTestTitle("DEQUE");
+		std::deque<int> d(a, a + 5);
+		testEasyFind(d, 100);
+		testEasyFind(d, 22);
+	}
+
+	{
+		printTestTitle("SET");
+		std::set<int> s(a, a + 5);
+		int i = 0;
+		for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
+		{
+			std::cout << std::setw(3) << "[" << i++ << "]: " << *it << std::endl;
+		}
+		testEasyFind(s, 42);
+		testEasyFind(s, 33);
+	}
+
+	{
+		printTestTitle("MULTI SET");
+		std::multiset<int> ms(a, a + 5);
+		int i = 0;
+		for (std::set<int>::iterator it = ms.begin(); it != ms.end(); ++it)
+		{
+			std::cout << std::setw(3) << "[" << i++ << "]: " << *it << std::endl;
+		}
+		testEasyFind(ms, -1);
+		testEasyFind(ms, 55);
+	}
 
 	return 0;
 }

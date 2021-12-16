@@ -12,5 +12,7 @@ int main(void)
 
 	std::vector<int> values = sp.getValues();
 	std::cout << values.at(0) << std::endl;
+
+	std::cout << sp.longestSpan() << std::endl;
 	return (0);
 }

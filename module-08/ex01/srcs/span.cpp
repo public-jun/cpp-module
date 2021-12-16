@@ -43,6 +43,22 @@ void Span::addNumber(int n)
 	values_.push_back(n);
 }
 
+long Span::longestSpan()
+{
+	if (values_.size() == 0)
+	{
+		throw NoNumberException("No number is store");
+	}
+	else if (values_.size() == 1)
+	{
+		throw OnlyOneException("Ther is only one number stored");
+	}
+	std::vector<int>::iterator it_min = std::min_element(values_.begin(), values_.end());
+	std::vector<int>::iterator it_max = std::max_element(values_.begin(), values_.end());
+
+	return (long)(*it_max) - (*it_min);
+}
+
 Span::FullException::FullException(const std::string &s) :
 	runtime_error(s) {}
 
@@ -51,13 +67,3 @@ Span::NoNumberException::NoNumberException(const std::string &s) :
 
 Span::OnlyOneException::OnlyOneException(const std::string &s) :
 	runtime_error(s) {}
-
-// const char *Span::NoNumberException::what() const throw()
-// {
-// 	return ("No number is store");
-// }
-
-// const char *Span::OnlyOneException::what() const throw()
-// {
-// 	return ("Ther is only one number stored");
-// }

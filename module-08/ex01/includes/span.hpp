@@ -5,6 +5,7 @@
 #include <exception>
 #include <stdexcept>
 #include <string>
+#include <algorithm>
 
 class Span
 {
@@ -19,7 +20,7 @@ class Span
 
 		void addNumber(int n);
 		// long shortestSpan();
-		// long longestSpan();
+		long longestSpan();
 
 		class FullException : public std::runtime_error
 		{

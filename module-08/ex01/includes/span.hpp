@@ -4,6 +4,7 @@
 #include <vector>
 #include <exception>
 #include <stdexcept>
+#include <string>
 
 class Span
 {
@@ -13,31 +14,34 @@ class Span
 		Span &operator=(const Span &other);
 		~Span();
 
+		unsigned int getSize() const;
+		std::vector<int> getValues() const;
+
 		void addNumber(int n);
-		long shortestSpan();
-		long longestSpan();
+		// long shortestSpan();
+		// long longestSpan();
 
 		class FullException : public std::runtime_error
 		{
 			public:
-				const char *what() const throw();
+				FullException(const std::string &s);
 		};
 
 		class NoNumberException : public std::runtime_error
 		{
 			public:
-				const char *what() const throw();
+				NoNumberException(const std::string &s);
 		};
 
 		class OnlyOneException : public std::runtime_error
 		{
 			public:
-				const char *what() const throw();
+				OnlyOneException(const std::string &s);
 		};
 
 	private :
 		unsigned int size_;
-		std::vector<int> v_;
+		std::vector<int> values_;
 		Span();
 };
 

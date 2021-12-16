@@ -1,7 +1,16 @@
+#include <span.hpp>
 #include <iostream>
 
 int main(void)
 {
-	std::cout << "hello world" << std::endl;
+	Span sp = Span(5);
+
+	sp.addNumber(1);
+	sp.addNumber(2);
+	sp.addNumber(3);
+	sp.addNumber(4);
+
+	std::vector<int> values = sp.getValues();
+	std::cout << values.at(0) << std::endl;
 	return (0);
 }

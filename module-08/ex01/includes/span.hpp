@@ -1,7 +1,9 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <iterator>
 #include <vector>
+#include <set>
 #include <exception>
 #include <stdexcept>
 #include <string>
@@ -17,9 +19,14 @@ class Span
 
 		unsigned int getSize() const;
 		std::vector<int> getValues() const;
+		void setValues();
 
 		void addNumber(int n);
-		// long shortestSpan();
+		void addNumber(std::vector<int>::iterator begin,
+						std::vector<int>::iterator end);
+		void addNumber(std::vector<int>::const_iterator begin,
+						std::vector<int>::const_iterator end);
+		long shortestSpan();
 		long longestSpan();
 
 		class FullException : public std::runtime_error

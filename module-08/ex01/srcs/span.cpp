@@ -1,4 +1,5 @@
 #include <span.hpp>
+#include <iostream>
 
 Span::Span(unsigned int n)
 {
@@ -41,6 +42,54 @@ void Span::addNumber(int n)
 		throw FullException("Stored number is FULL");
 	}
 	values_.push_back(n);
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	for (std::vector<int>::iterator it = begin; it != end; ++it)
+	{
+		if (values_.size() >= size_)
+		{
+			throw FullException("Stored number is FULL");
+		}
+		values_.push_back(*it);
+	}
+}
+
+void Span::addNumber(std::vector<int>::const_iterator begin, std::vector<int>::const_iterator end)
+{
+	for (std::vector<int>::const_iterator it = begin; it != end; ++it)
+	{
+		if (values_.size() >= size_)
+		{
+			throw FullException("Stored number is FULL");
+		}
+		values_.push_back(*it);
+	}
+}
+
+long Span::shortestSpan()
+{
+	if (values_.size() == 0)
+	{
+		throw NoNumberException("No number is store");
+	}
+	else if (values_.size() == 1)
+	{
+		throw OnlyOneException("Ther is only one number stored");
+	}
+	long span;
+	std::multiset<int> sort_values(values_.begin(), values_.end());
+	const std::multiset<int>::const_iterator it_end = sort_values.end();
+	std::multiset<int>::iterator first = sort_values.begin();
+	std::multiset<int>::iterator second = sort_values.begin();
+	for (std::advance(second, 1); second != it_end; ++second)
+	{
+		if (*second - *first < span)
+			span = *second - *first;
+		++first;
+	}
+	return (span);
 }
 
 long Span::longestSpan()

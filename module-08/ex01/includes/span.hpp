@@ -1,7 +1,9 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <iterator>
 #include <vector>
+#include <set>
 #include <exception>
 #include <stdexcept>
 #include <string>
@@ -19,7 +21,7 @@ class Span
 		std::vector<int> getValues() const;
 
 		void addNumber(int n);
-		// long shortestSpan();
+		long shortestSpan();
 		long longestSpan();
 
 		class FullException : public std::runtime_error

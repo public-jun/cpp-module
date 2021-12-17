@@ -1,18 +1,31 @@
 #include <span.hpp>
+#include <color.hpp>
 #include <iostream>
+
+void printTestTitle(std::string title)
+{
+	std::cout << "\n"
+			  << CYAN
+			  << title
+			  << " TEST"
+			  << END << std::endl;
+}
 
 int main(void)
 {
-	Span sp = Span(5);
+	{
+		printTestTitle("SUBJECT");
+		Span sp = Span(5);
 
-	sp.addNumber(1);
-	sp.addNumber(2);
-	sp.addNumber(3);
-	sp.addNumber(4);
+		sp.addNumber(5);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
 
-	std::vector<int> values = sp.getValues();
-	std::cout << values.at(0) << std::endl;
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
 
-	std::cout << sp.longestSpan() << std::endl;
 	return (0);
 }

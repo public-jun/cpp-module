@@ -19,8 +19,13 @@ class Span
 
 		unsigned int getSize() const;
 		std::vector<int> getValues() const;
+		void setValues();
 
 		void addNumber(int n);
+		void addNumber(std::vector<int>::iterator begin,
+						std::vector<int>::iterator end);
+		void addNumber(std::vector<int>::const_iterator begin,
+						std::vector<int>::const_iterator end);
 		long shortestSpan();
 		long longestSpan();
 

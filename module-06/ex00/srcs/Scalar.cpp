@@ -35,87 +35,99 @@ const std::string Scalar::getLiteralValue() const
 	return (literal_value_);
 }
 
-static bool isChar(const std::string &value)
+namespace
 {
-	if (value.length() == 1
-		&& std::isprint(value[0])
-		&& !std::isdigit(value[0]))
-		return (true);
-	return (false);
-
-}
-
-static bool isInt(const std::string &value)
-{
-	unsigned int i = 0;
-	std::string::size_type len = value.length();
-
-	if (value[i] == '0')
+	bool isChar(const std::string &value)
 	{
-		if (len == 1)
+		if (value.length() == 1
+			&& std::isprint(value[0])
+			&& !std::isdigit(value[0]))
 			return (true);
-		else
-			return (false);
+		return (false);
+
 	}
-	if (value[i] == '+' || value[i] == '-')
-		++i;
-	while (value[i])
+}
+
+namespace
+{
+	bool isInt(const std::string &value)
 	{
-		if (!std::isdigit(value[i]))
-			break;
-		++i;
+		unsigned int i = 0;
+		std::string::size_type len = value.length();
+
+		if (value[i] == '0')
+		{
+			if (len == 1)
+				return (true);
+			else
+				return (false);
+		}
+		if (value[i] == '+' || value[i] == '-')
+			++i;
+		while (value[i])
+		{
+			if (!std::isdigit(value[i]))
+				break;
+			++i;
+		}
+		if (len == static_cast<std::string::size_type>(i))
+			return (true);
+		return (false);
 	}
-	if (len == static_cast<std::string::size_type>(i))
-		return (true);
-	return (false);
 }
 
-static bool isDouble(const std::string &value)
+namespace
 {
-	std::string::size_type decimal_pos = value.find_first_of(".", 0);
-	std::string::size_type len = value.length();
-	std::string::size_type i = 0;
+	bool isDouble(const std::string &value)
+	{
+		std::string::size_type decimal_pos = value.find_first_of(".", 0);
+		std::string::size_type len = value.length();
+		std::string::size_type i = 0;
 
-	if (decimal_pos == std::string::npos || decimal_pos == 0 || decimal_pos != value.find_last_of(".", len - 1) || decimal_pos == len - 1 )
-		return (false);
-	if (value[i] == '+' || value[i] == '-')
+		if (decimal_pos == std::string::npos || decimal_pos == 0 || decimal_pos != value.find_last_of(".", len - 1) || decimal_pos == len - 1 )
+			return (false);
+		if (value[i] == '+' || value[i] == '-')
+			++i;
+		if (value[i] == '.')
+			return (false);
+		while (isdigit(value[i]))
+			++i;
+		if (i != decimal_pos)
+			return (false);
 		++i;
-	if (value[i] == '.')
+		while (isdigit(value[i]))
+			++i;
+		if (len == static_cast<std::string::size_type>(i))
+			return (true);
 		return (false);
-	while (isdigit(value[i]))
-		++i;
-	if (i != decimal_pos)
-		return (false);
-	++i;
-	while (isdigit(value[i]))
-		++i;
-	if (len == static_cast<std::string::size_type>(i))
-		return (true);
-	return (false);
+	}
 }
 
-static bool isFloat(const std::string &value)
+namespace
 {
-	std::string::size_type decimal_pos = value.find_first_of(".", 0);
-	std::string::size_type len = value.length();
-	std::string::size_type i = 0;
+	bool isFloat(const std::string &value)
+	{
+		std::string::size_type decimal_pos = value.find_first_of(".", 0);
+		std::string::size_type len = value.length();
+		std::string::size_type i = 0;
 
-	if (decimal_pos == std::string::npos || decimal_pos == 0 || decimal_pos != value.find_last_of(".", len - 1) || decimal_pos == len - 1 )
-		return (false);
-	if (value[i] == '+' || value[i] == '-')
+		if (decimal_pos == std::string::npos || decimal_pos == 0 || decimal_pos != value.find_last_of(".", len - 1) || decimal_pos == len - 1 )
+			return (false);
+		if (value[i] == '+' || value[i] == '-')
+			++i;
+		if (value[i] == '.')
+			return (false);
+		while (isdigit(value[i]))
+			++i;
+		if (i != decimal_pos)
+			return (false);
 		++i;
-	if (value[i] == '.')
+		while (isdigit(value[i]))
+			++i;
+		if (value[i] == 'f' && len == static_cast<std::string::size_type>(i + 1))
+			return (true);
 		return (false);
-	while (isdigit(value[i]))
-		++i;
-	if (i != decimal_pos)
-		return (false);
-	++i;
-	while (isdigit(value[i]))
-		++i;
-	if (value[i] == 'f' && len == static_cast<std::string::size_type>(i + 1))
-		return (true);
-	return (false);
+	}
 }
 
 Scalar::Types Scalar::checkType()

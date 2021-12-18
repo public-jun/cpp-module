@@ -40,7 +40,23 @@ int main()
 	}
 
 	{
-		printTestTitle("Mutant Stack");
+		printTestTitle("Copy Constructor");
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+		MutantStack<int> copy_s(mstack);
+		MutantStack<int>::iterator copy_ite = copy_s.end();
+		for (MutantStack<int>::iterator copy_it = copy_s.begin(); copy_it != copy_ite; ++copy_it)
+		{
+			std::cout << *copy_it << std::endl;
+		}
+	}
+
+	{
+		printTestTitle("Mutant Stack Normal iterator");
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
@@ -61,7 +77,7 @@ int main()
 	}
 
 	{
-		printTestTitle("List");
+		printTestTitle("List Normal iterator");
 		std::list<int> ls;
 		ls.push_back(5);
 		ls.push_back(17);
@@ -80,5 +96,23 @@ int main()
 			std::cout << *it << std::endl;
 		}
 	}
+
+	{
+		printTestTitle("Mutant Stack Reverse iterator");
+		MutantStack<int> mstack;
+		mstack.push(5);
+		mstack.push(17);
+		mstack.push(3);
+		mstack.push(5);
+		mstack.push(737);
+
+		std::cout << "print element" << std::endl;
+		const MutantStack<int>::const_reverse_iterator it_e = mstack.rend();
+		for (MutantStack<int>::reverse_iterator it = mstack.rbegin(); it != it_e; ++it)
+		{
+			std::cout << *it << std::endl;
+		}
+	}
+
 	return 0;
 }

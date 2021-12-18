@@ -29,7 +29,6 @@ class Scalar
 		} Types;
 
 		void convert();
-		const std::string getLiteralValue() const;
 
 	private:
 		Scalar();
@@ -43,6 +42,8 @@ class Scalar
 		bool over_flow_i_;
 		bool over_flow_f_;
 		bool over_flow_d_;
+
+		const std::string getLiteralValue() const;
 
 		Types checkType();
 		void storeValue();

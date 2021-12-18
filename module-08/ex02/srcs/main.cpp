@@ -53,7 +53,7 @@ int main()
 		std::cout << mstack.size() << '\n' << std::endl;
 
 		std::cout << "print element" << std::endl;
-		MutantStack<int>::iterator it_e = mstack.end();
+		const MutantStack<int>::iterator it_e = mstack.end();
 		for (MutantStack<int>::iterator it = mstack.begin(); it != it_e; ++it)
 		{
 			std::cout << *it << std::endl;
@@ -74,7 +74,7 @@ int main()
 		std::cout << ls.size() << '\n' << std::endl;
 
 		std::cout << "print element" << std::endl;
-		std::list<int>::iterator it_e = ls.end();
+		const std::list<int>::iterator it_e = ls.end();
 		for (std::list<int>::iterator it = ls.begin(); it != it_e; ++it)
 		{
 			std::cout << *it << std::endl;

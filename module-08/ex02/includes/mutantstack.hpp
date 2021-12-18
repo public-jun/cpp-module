@@ -18,6 +18,8 @@ class MutantStack : public std::stack<T>
 		iterator end();
 
 		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+		const_iterator begin() const;
+		const_iterator end() const;
 	private:
 };
 
@@ -50,6 +52,18 @@ typename MutantStack<T>::iterator MutantStack<T>::begin()
 
 template <class T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
+{
+	return (this->c.end());
+}
+
+template <class T>
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const
+{
+	return (this->c.begin());
+}
+
+template <class T>
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const
 {
 	return (this->c.end());
 }

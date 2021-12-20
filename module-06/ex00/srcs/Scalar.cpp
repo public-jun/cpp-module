@@ -171,14 +171,14 @@ void Scalar::storeValue()
 
 void Scalar::checkOverFlow()
 {
-	if (store_value_ < std::numeric_limits<char>::min()
-		|| std::numeric_limits<char>::max() < store_value_)
+	if (store_value_ < static_cast<double>(std::numeric_limits<char>::min())
+		|| static_cast<double>(std::numeric_limits<char>::max()) < store_value_)
 		over_flow_c_ = true;
-	if (store_value_ < std::numeric_limits<int>::min()
-		|| std::numeric_limits<int>::max() < store_value_)
+	if (store_value_ < static_cast<double>(std::numeric_limits<int>::min())
+		|| static_cast<double>(std::numeric_limits<int>::max()) < store_value_)
 		over_flow_i_ = true;
-	if (store_value_ < -std::numeric_limits<float>::max()
-		|| std::numeric_limits<float>::max() < store_value_)
+	if (store_value_ < static_cast<double>(-std::numeric_limits<float>::max())
+		|| static_cast<double>(std::numeric_limits<float>::max()) < store_value_)
 		over_flow_f_ = true;
 }
 
@@ -270,6 +270,7 @@ void Scalar::printDouble()
 	if (isScienceValue())
 	{
 		printScienceValue();
+		std::cout << std::endl;
 	}
 	else if (over_flow_d_ || type_ == kDef)
 	{

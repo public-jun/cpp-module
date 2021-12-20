@@ -40,8 +40,7 @@ namespace
 	bool isChar(const std::string &value)
 	{
 		if (value.length() == 1
-			&& std::isprint(value[0])
-			&& !std::isdigit(value[0]))
+			&& std::isprint(value[0]))
 			return (true);
 		return (false);
 
@@ -258,7 +257,7 @@ void Scalar::printFloat()
 		if (std::floor(f_value) == f_value)
 			pos = 1;
 		else
-			pos = 10;
+			pos = 5;
 		std::cout << std::fixed << std::setprecision(pos) << f_value << "f" << std::endl;
 	}
 }
@@ -284,7 +283,7 @@ void Scalar::printDouble()
 		if (std::floor(d_value) == d_value)
 			pos = 1;
 		else
-			pos = 10;
+			pos = 15;
 		std::cout << std::fixed << std::setprecision(pos) << d_value << std::endl;
 	}
 }

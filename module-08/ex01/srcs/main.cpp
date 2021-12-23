@@ -125,7 +125,7 @@ int main(void)
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << e.what() << '\n';
+			std::cerr << RED << e.what() << END << std::endl;
 		}
 	}
 

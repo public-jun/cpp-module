@@ -40,7 +40,8 @@ namespace
 	bool isChar(const std::string &value)
 	{
 		if (value.length() == 1
-			&& std::isprint(value[0]))
+			&& std::isprint(value[0])
+			&& !std::isdigit(value[0]))
 			return (true);
 		return (false);
 
@@ -241,7 +242,8 @@ void Scalar::printFloat()
 		printScienceValue();
 		std::cout << "f" << std::endl;
 	}
-	else if (over_flow_f_ || type_ == kDef)
+	//else if (over_flow_f_ || type_ == kDef)
+	else if (type_ == kDef)
 	{
 		if (type_ == kFloat)
 		{

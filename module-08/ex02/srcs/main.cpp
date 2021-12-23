@@ -60,13 +60,13 @@ int main()
 		MutantStack<int> mstack;
 		mstack.push(5);
 		mstack.push(17);
-		std::cout << mstack.top() << std::endl;
+		std::cout << "top: " << mstack.top() << std::endl;
 		mstack.pop();
-		std::cout << mstack.top() << std::endl;
+		std::cout << "top: " << mstack.top() << std::endl;
 		mstack.push(3);
 		mstack.push(5);
 		mstack.push(737);
-		std::cout << mstack.size() << '\n' << std::endl;
+		std::cout << "size: " << mstack.size() << '\n' << std::endl;
 
 		std::cout << "print element" << std::endl;
 		const MutantStack<int>::iterator it_e = mstack.end();
@@ -81,13 +81,13 @@ int main()
 		std::list<int> ls;
 		ls.push_back(5);
 		ls.push_back(17);
-		std::cout << ls.back() << std::endl;
+		std::cout << "back: " << ls.back() << std::endl;
 		ls.pop_back();
-		std::cout << ls.back() << std::endl;
+		std::cout << "back: " << ls.back() << std::endl;
 		ls.push_back(3);
 		ls.push_back(5);
 		ls.push_back(737);
-		std::cout << ls.size() << '\n' << std::endl;
+		std::cout << "size: " << ls.size() << '\n' << std::endl;
 
 		std::cout << "print element" << std::endl;
 		const std::list<int>::iterator it_e = ls.end();

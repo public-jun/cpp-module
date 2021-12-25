@@ -90,4 +90,15 @@ typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
 	return (this->c.rend());
 }
 
+template <class T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const
+{
+	return (this->c.rbegin());
+}
+
+template <class T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const
+{
+	return (this->c.rend());
+}
 #endif

@@ -242,7 +242,6 @@ void Scalar::printFloat()
 		printScienceValue();
 		std::cout << "f" << std::endl;
 	}
-	//else if (over_flow_f_ || type_ == kDef)
 	else if (type_ == kDef)
 	{
 		if (type_ == kFloat)
